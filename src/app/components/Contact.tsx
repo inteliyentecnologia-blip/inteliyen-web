@@ -21,7 +21,7 @@ Para agilizar nuestra comunicación, aquí dejo mis datos:
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <section id="contact" className="relative py-24 bg-black">
+    <section id="contact" className="relative py-24 bg-black overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[150px]"></div>
 
