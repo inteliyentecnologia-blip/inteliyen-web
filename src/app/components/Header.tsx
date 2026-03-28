@@ -27,6 +27,7 @@ export function Header() {
     { name: 'Inicio', id: 'home' },
     { name: 'Nosotros', id: 'about' },
     { name: 'Servicios', id: 'services' },
+    { name: 'Cursos', id: 'courses' },
     { name: 'Contacto', id: 'contact' },
   ];
 
