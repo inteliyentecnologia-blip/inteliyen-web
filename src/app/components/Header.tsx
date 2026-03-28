@@ -6,7 +6,6 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Detectar scroll para cambiar el fondo del menú
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -16,13 +15,24 @@ export function Header() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    setIsMobileMenuOpen(false); // Cierra el menú en móvil al hacer clic
+    setIsMobileMenuOpen(false); // Cierra el menú en celular al hacer clic
+    
+    // Intenta buscar la sección en la página actual
     const element = document.getElementById(id);
+    
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Si no encuentra la sección (como en el caso de la página de Cursos), te redirige a ella
+      if (id === 'courses') {
+        window.location.href = '/courses'; // Te lleva a tu página de cursos
+      } else {
+        window.location.href = `/#${id}`;
+      }
     }
   };
 
+  // Aquí están tus 5 opciones exactas
   const navLinks = [
     { name: 'Inicio', id: 'home' },
     { name: 'Nosotros', id: 'about' },
@@ -43,7 +53,7 @@ export function Header() {
           </span>
         </div>
 
-        {/* Desktop Nav (Oculto en celulares) */}
+        {/* Menú de Escritorio */}
         <nav className="hidden md:flex gap-8">
           {navLinks.map((link) => (
             <button
@@ -67,9 +77,9 @@ export function Header() {
         </button>
       </div>
 
-      {/* Menú Desplegable para Celulares */}
+      {/* Menú Desplegable para Celulares (Ahora con más altura para que quepan todos) */}
       <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-b border-purple-500/20 shadow-2xl transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-64 py-4' : 'max-h-0 py-0'}`}
+        className={`md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-b border-purple-500/20 shadow-2xl transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-96 py-4' : 'max-h-0 py-0'}`}
       >
         <div className="flex flex-col px-6 gap-2">
           {navLinks.map((link) => (
