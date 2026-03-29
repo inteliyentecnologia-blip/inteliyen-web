@@ -3,8 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, TrendingUp, Award, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { courses } from '../data/coursesData';
 
-// --- IMPORTAMOS EL SELLO (Cambia la ruta si es necesario) ---
-import selloCertivali from '../../assets/sello-certivali.png'; 
+// --- IMPORTACIÓN DEL SELLO (Asegúrate que la ruta sea correcta) ---
+import selloCertivali from '../../assets/sello-certivali.png';
 
 export function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -26,14 +26,16 @@ export function CourseDetailPage() {
     );
   }
 
+  // --- CONFIGURACIÓN CENTRAL DE WHATSAPP ---
   const whatsappNumber = "523314494403"; 
   const whatsappMessage = `Hola, me interesa obtener más información sobre el curso de ${course.title}.`;
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Header flotante */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-purple-500/10">
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative z-50">
           <Link to="/" className="flex items-center gap-4">
             <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent tracking-wider" style={{ fontFamily: 'Orbitron, sans-serif' }}>
               INTELIYEN
@@ -47,6 +49,7 @@ export function CourseDetailPage() {
       </header>
 
       <main className="pt-32 pb-20 px-6 relative overflow-hidden">
+        {/* Efecto de luz de fondo */}
         <div 
           className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20"
           style={{ backgroundColor: course.color?.from || '#9333ea' }}
@@ -54,6 +57,7 @@ export function CourseDetailPage() {
 
         <div className="max-w-5xl mx-auto relative z-10">
           
+          {/* Ficha Principal del Curso */}
           <div className="bg-black/60 backdrop-blur-xl border border-gray-800 rounded-3xl p-8 md:p-12 mb-16">
             <div className="text-7xl mb-6">{course.emoji}</div>
             
@@ -73,6 +77,7 @@ export function CourseDetailPage() {
               {course.description}
             </p>
 
+            {/* Etiquetas */}
             <div className="flex flex-wrap gap-4 mb-10">
               <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">
                 <TrendingUp className="w-5 h-5" />
@@ -84,27 +89,7 @@ export function CourseDetailPage() {
               </div>
             </div>
 
-            {/* === NUEVA SECCIÓN DE VALIDACIÓN INTERNACIONAL === */}
-            <div className="bg-gray-900/40 backdrop-blur-sm border border-yellow-500/30 rounded-2xl p-6 mb-10 flex flex-col md:flex-row items-center gap-6 group hover:border-yellow-500/50 transition-colors duration-300">
-              <div className="w-24 md:w-32 shrink-0">
-                <img 
-                  src={selloCertivali} 
-                  alt="Sello de Certificación CERTIVALI" 
-                  className="w-full h-auto drop-shadow-[0_0_15px_rgba(234,179,8,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-all"
-                />
-              </div>
-              <div className="text-center md:text-left">
-                <h4 className="text-yellow-400 font-bold text-lg mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Acreditación con Valor Curricular
-                </h4>
-                <p className="text-gray-200 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  {/* Corregido 'sertificados' por 'certificados' para el público */}
-                  Al finalizar con éxito este programa, recibirás un certificado avalado por <strong className="text-white">CERTIVALI Institucion de validacion Internacional</strong>. Todas nuestras certificaciones cuentan con valor curricular formal, potenciando tu perfil profesional en el mercado laboral global.
-                </p>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-800 pt-8">
+            <div className="border-t border-gray-800 pt-8 mt-8">
               <a 
                 href={whatsappLink}
                 target="_blank"
@@ -116,14 +101,22 @@ export function CourseDetailPage() {
             </div>
           </div>
 
+          {/* SECCIÓN DEL TEMARIO (Módulos) */}
           {course.modules && course.modules.length > 0 && (
             <div className="mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+              <h2 
+                className="text-3xl md:text-4xl font-bold mb-10 text-center"
+                style={{ fontFamily: 'Orbitron, sans-serif' }}
+              >
                 Temario del Curso
               </h2>
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {course.modules.map((modulo, index) => (
-                  <div key={index} className="bg-gray-900/50 border border-gray-800 hover:border-gray-600 rounded-2xl p-6 transition-colors duration-300">
+                  <div 
+                    key={index} 
+                    className="bg-gray-900/50 border border-gray-800 hover:border-gray-600 rounded-2xl p-6 transition-colors duration-300"
+                  >
                     <div className="flex items-start gap-4 mb-4">
                       <div className="text-4xl">{modulo.emoji}</div>
                       <div>
@@ -131,6 +124,7 @@ export function CourseDetailPage() {
                         <p className="text-sm text-cyan-400 font-medium mb-4">{modulo.objective}</p>
                       </div>
                     </div>
+                    
                     <ul className="space-y-3 mb-6">
                       {modulo.topics.map((topic, tIndex) => (
                         <li key={tIndex} className="flex items-start gap-3 text-gray-300 text-sm">
@@ -139,6 +133,7 @@ export function CourseDetailPage() {
                         </li>
                       ))}
                     </ul>
+
                     {modulo.error && (
                       <div className="mt-auto bg-red-950/30 border border-red-900/50 rounded-lg p-3 flex items-start gap-3">
                         <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
@@ -151,9 +146,34 @@ export function CourseDetailPage() {
             </div>
           )}
 
+          {/* === ACREDITACIÓN INTERNACIONAL CERTIVALI === */}
+          <div className="bg-gray-900/50 border border-yellow-500/20 rounded-3xl p-10 flex flex-col md:flex-row items-center gap-8 shadow-2xl shadow-yellow-950/20 relative mb-16 overflow-hidden">
+            {/* Subtle background blur circle for yellow glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl opacity-50"></div>
+
+            <div className="relative z-10 w-40 md:w-56 shrink-0">
+              <img
+                src={selloCertivali}
+                alt="Sello de Acreditación Internacional CERTIVALI"
+                className="w-full h-auto drop-shadow-[0_0_20px_rgba(234,179,8,0.3)] transform hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+
+            <div className="relative z-10 text-center md:text-left flex-grow space-y-4">
+              <h3 className="text-3xl font-bold text-yellow-400" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+                Validación Curricular de Valor Internacional
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed max-w-2xl" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Al concluir con éxito este programa, <span className="text-white font-medium">INTELIYEN</span> otorga un diploma avalado por <strong className="text-yellow-100 font-bold">CERTIVALI (Institución de Validación Internacional)</strong>. Todas nuestras acreditaciones cuentan con <strong className="text-yellow-100">valor curricular formal</strong>, garantizando que tus nuevas competencias son reconocidas por empresas y organismos a nivel global.
+              </p>
+            </div>
+          </div>
+
+          {/* CTA Final */}
           <div className="text-center bg-gradient-to-r from-purple-900/20 to-cyan-900/20 border border-purple-500/20 rounded-3xl p-10">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">¿Dudas sobre este programa?</h3>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Nuestro equipo puede adaptar este temario a las necesidades específicas de tu empresa o perfil.</p>
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Nuestro equipo puede adaptar este temario a las necesidades específicas de tu empresa o perfil profesional.</p>
+            
             <a 
               href={whatsappLink}
               target="_blank"
