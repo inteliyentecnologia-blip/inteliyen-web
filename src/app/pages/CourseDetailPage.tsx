@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Clock, TrendingUp, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Clock, TrendingUp, Award, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { courses } from '../data/coursesData';
+
+// --- IMPORTAMOS EL SELLO (Cambia la ruta si es necesario) ---
+import selloCertivali from '../../assets/sello-certivali.png'; 
 
 export function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -70,7 +73,6 @@ export function CourseDetailPage() {
               {course.description}
             </p>
 
-            {/* AQUI ELIMINÉ LA PASTILLA DE PRECIO. SOLO QUEDA NIVEL Y DURACIÓN */}
             <div className="flex flex-wrap gap-4 mb-10">
               <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">
                 <TrendingUp className="w-5 h-5" />
@@ -82,7 +84,27 @@ export function CourseDetailPage() {
               </div>
             </div>
 
-            <div className="border-t border-gray-800 pt-8 mt-8">
+            {/* === NUEVA SECCIÓN DE VALIDACIÓN INTERNACIONAL === */}
+            <div className="bg-gray-900/40 backdrop-blur-sm border border-yellow-500/30 rounded-2xl p-6 mb-10 flex flex-col md:flex-row items-center gap-6 group hover:border-yellow-500/50 transition-colors duration-300">
+              <div className="w-24 md:w-32 shrink-0">
+                <img 
+                  src={selloCertivali} 
+                  alt="Sello de Certificación CERTIVALI" 
+                  className="w-full h-auto drop-shadow-[0_0_15px_rgba(234,179,8,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-all"
+                />
+              </div>
+              <div className="text-center md:text-left">
+                <h4 className="text-yellow-400 font-bold text-lg mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Acreditación con Valor Curricular
+                </h4>
+                <p className="text-gray-200 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {/* Corregido 'sertificados' por 'certificados' para el público */}
+                  Al finalizar con éxito este programa, recibirás un certificado avalado por <strong className="text-white">CERTIVALI Institucion de validacion Internacional</strong>. Todas nuestras certificaciones cuentan con valor curricular formal, potenciando tu perfil profesional en el mercado laboral global.
+                </p>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-800 pt-8">
               <a 
                 href={whatsappLink}
                 target="_blank"
