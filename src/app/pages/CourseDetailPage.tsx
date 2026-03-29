@@ -1,22 +1,16 @@
 import { useEffect } from 'react';
-// IMPORTANTE: El import correcto para evitar pantallas blancas
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Clock, TrendingUp, CheckCircle, Award } from 'lucide-react';
+import { ArrowLeft, Clock, TrendingUp, Award } from 'lucide-react';
 import { courses } from '../data/coursesData';
 
 export function CourseDetailPage() {
-  // Sacamos el ID de la URL (ej. "ia-empresas")
   const { id } = useParams<{ id: string }>();
-  
-  // Buscamos el curso exacto en tu base de datos
   const course = courses.find((c) => c.id === id);
 
-  // Cada que entres a la página, te manda hasta arriba
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  // DEFENSA ANTI-PANTALLA BLANCA: Si no encuentra el curso, muestra esto
   if (!course) {
     return (
       <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
@@ -31,7 +25,6 @@ export function CourseDetailPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header flotante */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-purple-500/10">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-4">
@@ -39,27 +32,20 @@ export function CourseDetailPage() {
               INTELIYEN
             </span>
           </Link>
-          <Link
-            to="/cursos"
-            className="flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-colors"
-          >
+          <Link to="/cursos" className="flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-colors">
             <ArrowLeft className="w-5 h-5" />
             <span>Volver a Cursos</span>
           </Link>
         </nav>
       </header>
 
-      {/* Contenido principal del curso */}
       <main className="pt-32 pb-20 px-6 relative overflow-hidden">
-        {/* Efectos de luz en el fondo usando los colores del curso */}
         <div 
           className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20"
           style={{ backgroundColor: course.color?.from || '#9333ea' }}
         ></div>
 
         <div className="max-w-4xl mx-auto relative z-10">
-          
-          {/* Ficha del Curso */}
           <div className="bg-black/60 backdrop-blur-xl border border-gray-800 rounded-3xl p-8 md:p-12 mb-12">
             <div className="text-7xl mb-6">{course.emoji}</div>
             
@@ -79,7 +65,6 @@ export function CourseDetailPage() {
               {course.description}
             </p>
 
-            {/* Etiquetas de nivel y duración */}
             <div className="flex flex-wrap gap-4 mb-10">
               <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">
                 <TrendingUp className="w-5 h-5" />
@@ -95,20 +80,14 @@ export function CourseDetailPage() {
               </div>
             </div>
 
-            {/* Call to Action */}
             <div className="border-t border-gray-800 pt-8 mt-8">
               <h3 className="text-2xl font-bold mb-4">¿Listo para transformar tu carrera?</h3>
               <p className="text-gray-400 mb-6">Asegura tu lugar en la próxima generación y domina las tecnologías del futuro.</p>
-              
-              <Link
-                to="/#contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105 w-full md:w-auto"
-              >
+              <Link to="/#contact" className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105 w-full md:w-auto">
                 Inscribirme Ahora
               </Link>
             </div>
           </div>
-
         </div>
       </main>
     </div>
