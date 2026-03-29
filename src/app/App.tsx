@@ -7,6 +7,9 @@ import { Contact } from './components/Contact';
 import { Projects } from './components/Projects'; 
 import { CoursesListPage } from './pages/CoursesListPage';
 
+// ESTA ES LA CLAVE QUE FALTABA GUARDAR AQUÍ:
+import { CourseDetailPage } from './pages/CourseDetailPage'; 
+
 function App() {
   return (
     <Router>
@@ -20,7 +23,12 @@ function App() {
             <div id="contact"><Contact /></div>
           </div>
         } />
-        <Route path="/courses" element={<CoursesListPage />} />
+        
+        {/* Tu catálogo principal */}
+        <Route path="/cursos" element={<CoursesListPage />} />
+        
+        {/* EL MAPA PARA LOS CURSOS INDIVIDUALES */}
+        <Route path="/cursos/:id" element={<CourseDetailPage />} />
       </Routes>
     </Router>
   );
