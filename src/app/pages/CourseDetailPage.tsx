@@ -23,9 +23,10 @@ export function CourseDetailPage() {
     );
   }
 
-  // --- CONFIGURACIÓN DE WHATSAPP ---
-  const whatsappNumber = "523300000000"; // <--- NO OLVIDES PONER TU CELULAR AQUÍ
+  // --- CONFIGURACIÓN CENTRAL DE WHATSAPP ---
+  const whatsappNumber = "523314494403"; 
   const whatsappMessage = `Hola, me interesa obtener más información sobre el curso de ${course.title}.`;
+  // Esta variable es la que inyectaremos en TODOS los botones
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
@@ -91,14 +92,14 @@ export function CourseDetailPage() {
             </div>
 
             <div className="border-t border-gray-800 pt-8 mt-8">
-              {/* PRIMER BOTÓN DE WHATSAPP (Debajo de la info) */}
+              {/* === BOTÓN 1: WHATSAPP DIRECTO === */}
               <a 
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105 w-full md:w-auto"
               >
-                Solicitar Cotización por WhatsApp
+                Solicitar Cotización
               </a>
             </div>
           </div>
@@ -153,14 +154,14 @@ export function CourseDetailPage() {
             <h3 className="text-2xl md:text-3xl font-bold mb-4">¿Dudas sobre este programa?</h3>
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Nuestro equipo puede adaptar este temario a las necesidades específicas de tu empresa.</p>
             
-            {/* SEGUNDO BOTÓN DE WHATSAPP (Hasta abajo) */}
+            {/* === BOTÓN 2: WHATSAPP DIRECTO === */}
             <a 
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-3 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-colors"
             >
-              Hablar con un Asesor en WhatsApp
+              Hablar con un Asesor
             </a>
           </div>
 
