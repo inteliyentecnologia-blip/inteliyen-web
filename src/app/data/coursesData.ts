@@ -14,7 +14,7 @@ export interface Course {
   level: string;
   duration: string;
   status: 'available' | 'coming-soon';
-  // SE ELIMINÓ LA PROPIEDAD 'price'
+  price: string;
   color: {
     from: string;
     to: string;
@@ -31,6 +31,7 @@ export const courses: Course[] = [
     level: 'Corporativo y Personal',
     duration: '4 semanas',
     status: 'available',
+    price: 'Cotizar',
     color: { from: '#61DAFB', to: '#00D8FF' },
     modules: [
       {
@@ -45,13 +46,14 @@ export const courses: Course[] = [
     ]
   },
   {
-    id: 'ia-creativa',
+    id: 'ia-multimedia',
     title: 'IA Multimedia y Diseño',
     description: 'Generación de imágenes, audio y video de nivel profesional usando Midjourney, DALL·E 3, Runway y ElevenLabs.',
     emoji: '🎨',
     level: 'Corporativo y Personal',
     duration: '5 semanas',
     status: 'available',
+    price: 'Cotizar',
     color: { from: '#F7DF1E', to: '#F0DB4F' },
     modules: [
       {
@@ -73,6 +75,7 @@ export const courses: Course[] = [
     level: 'Corporativo y Personal',
     duration: '6 semanas',
     status: 'available',
+    price: 'Cotizar',
     color: { from: '#FF6B6B', to: '#FF8E53' },
     modules: [
       {
@@ -84,56 +87,62 @@ export const courses: Course[] = [
     ]
   },
   {
-    id: 'project-management',
-    title: 'Project Management Tech',
-    description: 'Gestiona proyectos tecnológicos complejos y equipos remotos combinando metodologías Ágiles (Scrum) con herramientas de IA.',
-    emoji: '📈',
-    level: 'Corporativo y Personal',
-    duration: '4 semanas',
+    id: 'ia-generativa-empresas',
+    title: 'IA Generativa para Empresas',
+    description: 'Domina ChatGPT, Claude y Gemini para optimizar operaciones empresariales, desde la automatización de contenidos hasta la creación de asistentes propios.',
+    emoji: '🏢',
+    level: 'Empresarial',
+    duration: '6 semanas',
     status: 'available',
+    price: 'Cotizar',
     color: { from: '#8A2BE2', to: '#00CED1' },
     modules: [
       {
-        emoji: "🎯", title: "Módulo 1: Mindset y Ciclo de Vida", objective: "Estructurar proyectos desde la idea hasta la entrega.", topics: ["Diferencias entre Cascada y metodologías Ágiles (Scrum).", "Creación de la EDT y estimación de tiempos.", "Roles claros: Product Owner, Scrum Master y Developers."]
+        emoji: "🤖", title: "Módulo 1: Automatización de Operaciones", objective: "Utilizar IA como el motor operativo de tu negocio.", topics: ["Automatización de minutas y tareas post-reunión.", "Análisis rápido de CSVs con Advanced Data Analysis de ChatGPT.", "Implementación en el flujo de trabajo diario del equipo."], error: "Error Común: Crear procesos demasiado complejos que el equipo no usa."
       },
       {
-        emoji: "🤖", title: "Módulo 2: IA en la Gestión", objective: "Automatizar la administración del proyecto.", topics: ["Uso de ChatGPT para redactar historias de usuario.", "Automatización de minutas y tareas post-reunión (Daily Scrum).", "Gestión de riesgos predictiva asistida por IA."]
+        emoji: "✍️", title: "Módulo 3: Automatización de Contenidos", objective: "Crear correos, reportes y copy en segundos.", topics: ["Integración de Google Gemini en Google Workspace (Docs, Gmail).", "Creación de plantillas de correo automatizadas.", "Redacción de propuestas comerciales persuasivas."], error: "Error Común: Copiar y pegar sin darle el 'tono de voz' de la empresa."
+      },
+      {
+        emoji: "⚙️", title: "Módulo 4: Creación de Asistentes Propios", objective: "Construir un GPT personalizado para tu empresa.", topics: ["Cómo crear un GPT (Custom GPT) entrenado con tus propios PDFs.", "Privacidad de datos: Qué subir y qué no subir a la IA.", "Flujos de trabajo avanzados con asistentes específicos."]
       }
     ]
   },
   {
-    id: 'data-analytics',
-    title: 'Business Data Analytics',
-    description: 'Transforma datos en decisiones estratégicas. Aprende limpieza de datos, SQL, Power BI y análisis predictivo con IA.',
-    emoji: '📊',
-    level: 'Corporativo y Personal',
-    duration: '5 semanas',
+    id: 'ia-marketing-ventas',
+    title: 'IA para Marketing y Ventas',
+    description: 'Utiliza ChatGPT, Midjourney y HubSpot AI para crear campañas impactantes, generar leads cualificados y optimizar la conversión.',
+    emoji: '📈',
+    level: 'Crecimiento',
+    duration: '6 semanas',
     status: 'available',
+    price: 'Cotizar',
     color: { from: '#10B981', to: '#059669' },
     modules: [
       {
-        emoji: "🧹", title: "Módulo 1: Tratamiento de Datos", objective: "Preparar y extraer información de bases de datos.", topics: ["Limpieza de datos con Power Query y Python básico.", "Consultas SQL: JOINs, Subconsultas y GROUP BY.", "Análisis rápido de CSVs con Advanced Data Analysis de ChatGPT."]
+        emoji: "🎯", title: "Módulo 1: Campañas de Alto Impacto", objective: "Diseñar y ejecutar campañas de marketing en tiempo récord.", topics: ["Generación de ideas y copies creativos con ChatGPT.", "Creación de visuales publicitarios de nivel profesional con Midjourney.", "A/B testing y optimización de campañas asistida por IA."]
       },
       {
-        emoji: "📉", title: "Módulo 2: Visualización y CRM", objective: "Crear paneles para la toma de decisiones directivas.", topics: ["Diseño de Dashboards interactivos en Power BI.", "Salesforce Einstein / HubSpot AI para predicción de ventas.", "Interpretación de insights de mercado."]
+        emoji: "🤖", title: "Módulo 2: Generación de Leads Cualificados", objective: "Utilizar herramientas de IA para nutrir y calificar clientes potenciales.", topics: ["HubSpot AI para predicción de ventas y calificación de leads.", "Chatbots avanzados para atención y venta automática.", "Análisis de sentimientos de clientes potenciales."]
       }
     ]
   },
   {
-    id: 'ciberseguridad',
-    title: 'Ciberseguridad Corporativa',
-    description: 'Protege a tu empresa contra las nuevas amenazas generadas por IA, phishing avanzado y fugas de información.',
+    id: 'ciberseguridad-ia',
+    title: 'Ciberseguridad y Amenazas con IA',
+    description: 'Protege a tu empresa contra las nuevas amenazas generadas por IA, phishing avanzado, deepfakes y fugas de información.',
     emoji: '🛡️',
     level: 'Corporativo y Personal',
     duration: '3 semanas',
     status: 'available',
+    price: 'Cotizar',
     color: { from: '#A855F7', to: '#EC4899' },
     modules: [
       {
-        emoji: "🎣", title: "Módulo 1: Amenazas con IA", objective: "Identificar engaños digitales hiperrealistas.", topics: ["Detección de Deepfakes de audio y video (Spear-phishing).", "Ingeniería social generada por ChatGPT.", "Ransomware y protección de dispositivos endpoint."], error: "Error Común: Pensar que el antivirus base detendrá un ataque de ingeniería social."
+        emoji: "🎣", title: "Módulo 1: Phishing y Deepfakes con IA", objective: "Identificar y evitar engaños digitales hiperrealistas.", topics: ["Detección de deepfakes de audio y video (Spear-phishing).", "Ingeniería social generada por ChatGPT.", "Detección de correos de phishing avanzados."]
       },
       {
-        emoji: "🔐", title: "Módulo 2: Políticas y Protección", objective: "Asegurar la información corporativa.", topics: ["Privacidad en IA: Qué no debes subir a ChatGPT/Claude.", "Implementación estricta de Autenticación de Dos Pasos (2FA).", "Planes de contingencia y recuperación de desastres."]
+        emoji: "🔐", title: "Módulo 2: Protección y Políticas de IA", objective: "Asegurar la información corporativa y el uso ético de la IA.", topics: ["Privacidad en IA: Qué no debes subir a ChatGPT/Claude.", "Implementación estricta de Autenticación de Dos Pasos (2FA).", "Planes de contingencia y recuperación de desastres."]
       }
     ]
   }
