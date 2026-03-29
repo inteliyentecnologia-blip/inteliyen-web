@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Clock, TrendingUp, Award, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Clock, TrendingUp, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { courses } from '../data/coursesData';
 
 export function CourseDetailPage() {
@@ -23,15 +23,12 @@ export function CourseDetailPage() {
     );
   }
 
-  // --- CONFIGURACIÓN CENTRAL DE WHATSAPP ---
   const whatsappNumber = "523314494403"; 
   const whatsappMessage = `Hola, me interesa obtener más información sobre el curso de ${course.title}.`;
-  // Esta variable es la que inyectaremos en TODOS los botones
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header flotante */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-purple-500/10">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-4">
@@ -47,7 +44,6 @@ export function CourseDetailPage() {
       </header>
 
       <main className="pt-32 pb-20 px-6 relative overflow-hidden">
-        {/* Efecto de luz de fondo */}
         <div 
           className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20"
           style={{ backgroundColor: course.color?.from || '#9333ea' }}
@@ -55,7 +51,6 @@ export function CourseDetailPage() {
 
         <div className="max-w-5xl mx-auto relative z-10">
           
-          {/* Ficha Principal del Curso */}
           <div className="bg-black/60 backdrop-blur-xl border border-gray-800 rounded-3xl p-8 md:p-12 mb-16">
             <div className="text-7xl mb-6">{course.emoji}</div>
             
@@ -75,7 +70,7 @@ export function CourseDetailPage() {
               {course.description}
             </p>
 
-            {/* Etiquetas */}
+            {/* AQUI ELIMINÉ LA PASTILLA DE PRECIO. SOLO QUEDA NIVEL Y DURACIÓN */}
             <div className="flex flex-wrap gap-4 mb-10">
               <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">
                 <TrendingUp className="w-5 h-5" />
@@ -85,41 +80,28 @@ export function CourseDetailPage() {
                 <Clock className="w-5 h-5" />
                 <span className="font-bold">{course.duration}</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-400 rounded-full border border-green-500/20">
-                <Award className="w-5 h-5" />
-                <span className="font-bold">{course.price}</span>
-              </div>
             </div>
 
             <div className="border-t border-gray-800 pt-8 mt-8">
-              {/* === BOTÓN 1: WHATSAPP DIRECTO === */}
               <a 
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105 w-full md:w-auto"
               >
-                Solicitar Cotización
+                Solicitar Información por WhatsApp
               </a>
             </div>
           </div>
 
-          {/* SECCIÓN DEL TEMARIO (Módulos) */}
           {course.modules && course.modules.length > 0 && (
             <div className="mb-16">
-              <h2 
-                className="text-3xl md:text-4xl font-bold mb-10 text-center"
-                style={{ fontFamily: 'Orbitron, sans-serif' }}
-              >
+              <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center" style={{ fontFamily: 'Orbitron, sans-serif' }}>
                 Temario del Curso
               </h2>
-              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {course.modules.map((modulo, index) => (
-                  <div 
-                    key={index} 
-                    className="bg-gray-900/50 border border-gray-800 hover:border-gray-600 rounded-2xl p-6 transition-colors duration-300"
-                  >
+                  <div key={index} className="bg-gray-900/50 border border-gray-800 hover:border-gray-600 rounded-2xl p-6 transition-colors duration-300">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="text-4xl">{modulo.emoji}</div>
                       <div>
@@ -127,7 +109,6 @@ export function CourseDetailPage() {
                         <p className="text-sm text-cyan-400 font-medium mb-4">{modulo.objective}</p>
                       </div>
                     </div>
-                    
                     <ul className="space-y-3 mb-6">
                       {modulo.topics.map((topic, tIndex) => (
                         <li key={tIndex} className="flex items-start gap-3 text-gray-300 text-sm">
@@ -136,7 +117,6 @@ export function CourseDetailPage() {
                         </li>
                       ))}
                     </ul>
-
                     {modulo.error && (
                       <div className="mt-auto bg-red-950/30 border border-red-900/50 rounded-lg p-3 flex items-start gap-3">
                         <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
@@ -149,12 +129,9 @@ export function CourseDetailPage() {
             </div>
           )}
 
-          {/* CTA Final */}
           <div className="text-center bg-gradient-to-r from-purple-900/20 to-cyan-900/20 border border-purple-500/20 rounded-3xl p-10">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">¿Dudas sobre este programa?</h3>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Nuestro equipo puede adaptar este temario a las necesidades específicas de tu empresa.</p>
-            
-            {/* === BOTÓN 2: WHATSAPP DIRECTO === */}
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Nuestro equipo puede adaptar este temario a las necesidades específicas de tu empresa o perfil.</p>
             <a 
               href={whatsappLink}
               target="_blank"
