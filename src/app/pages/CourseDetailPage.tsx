@@ -4,7 +4,7 @@ import { ArrowLeft, Clock, TrendingUp, Award, CheckCircle2, AlertTriangle } from
 import { courses } from '../data/coursesData';
 
 // --- IMPORTACIÓN DEL SELLO (Asegúrate que la ruta sea correcta) ---
-import selloCertivali from '../../assets/sello-certivali.png';
+import selloCertivali from '../../assets/sello-garantia.png';
 
 export function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
