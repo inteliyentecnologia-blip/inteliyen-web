@@ -2,11 +2,13 @@ export const coursesData = [
   {
     id: 1,
     icon: '🤖',
-    title: 'Productividad, Marketing y Ventas con IA',
+    // DESTACAMOS 'AI' PRIMERO
+    title: 'AI Productividad, Marketing y Ventas',
     description: 'Domina el Marco 4D, ChatGPT, Claude y Gemini para automatizar tareas, redactar documentos y organizar tu empresa.',
     audienceType: 'Corporativo y Personal',
     duration: '4 semanas',
-    audience: 'Público en general, emprendedores, administrativos, vendedores y cualquier persona con CERO conocimiento de tecnología que quiera trabajar menos y lograr más.',
+    audience: 'Público en general, emprendedores, administrativos, vendedores y cualquier persona con CERO conocimiento previo que quiera trabajar menos y lograr más.',
+    // Temario gordo y extenso de 4 módulos
     modules: [
       "Módulo 1: Mi Primer Asistente y el 'Zoológico' de la IA\n• Las 4 Reglas de Oro (El Marco 4D): Delegar, Describir, Discernir y Diligencia.\n• Los 3 Ingredientes Mágicos: Algoritmos, Datos y Poder de Cómputo.\n• El Zoológico de las IAs: ChatGPT (lógica), Claude (escritor), Gemini (Google), Perplexity (investigador).",
       "Módulo 2: Cómo hablarle al Robot (Ingeniería de Prompts)\n• Saber explicar: El secreto de las instrucciones claras y directas.\n• Las 3 piezas del Prompt: Qué quiero (Producto), Cómo lo quiero (Proceso) y Cómo debe actuar (Comportamiento).\n• Trucos de experto: Inyectar contexto, darle ejemplos de éxito (Few-Shot) y pedirle que 'piense paso a paso'.",
@@ -17,7 +19,7 @@ export const coursesData = [
   {
     id: 2,
     icon: '🎨',
-    title: 'Diseño, Imágenes y Video con IA',
+    title: 'AI Diseño, Imágenes y Video',
     description: 'Generación de imágenes, audio y video de nivel profesional usando Midjourney, DALL·E 3, Runway y ElevenLabs.',
     audienceType: 'Corporativo y Personal',
     duration: '5 semanas',
@@ -32,7 +34,7 @@ export const coursesData = [
   {
     id: 3,
     icon: '💻',
-    title: 'Desarrollo de Software Potenciado por IA',
+    title: 'AI Desarrollo de Software Potenciado',
     description: 'Acelera tu escritura de código y refactorización utilizando Cursor, GitHub Copilot y agentes de terminal.',
     audienceType: 'Corporativo y Personal',
     duration: '6 semanas',
@@ -47,7 +49,7 @@ export const coursesData = [
   {
     id: 4,
     icon: '🏢',
-    title: 'Agentes de IA y Automatización Avanzada',
+    title: 'AI Agentes y Automatización Avanzada',
     description: 'Construcción de Empleados Digitales y agentes autónomos usando n8n, Claude API y flujos de trabajo.',
     audienceType: 'Corporativo',
     duration: '5 semanas',
@@ -62,7 +64,7 @@ export const coursesData = [
   {
     id: 5,
     icon: '📈',
-    title: 'Project Manager & Master SCRUM con IA',
+    title: 'AI Project Manager & Master SCRUM',
     description: 'Gestión predictiva de proyectos, automatización de ceremonias y control inteligente del backlog.',
     audienceType: 'Corporativo',
     duration: '4 semanas',
@@ -77,7 +79,7 @@ export const coursesData = [
   {
     id: 6,
     icon: '🛡️',
-    title: 'Seguridad de la Información y Amenazas IA',
+    title: 'AI Seguridad y Amenazas',
     description: 'Protege a tu empresa contra ataques generativos, deepfakes, spear-phishing y establece políticas de IA.',
     audienceType: 'Corporativo',
     duration: '4 semanas',
