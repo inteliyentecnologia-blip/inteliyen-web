@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { coursesData } from '../data/coursesData';
-// IMPORTAMOS LOS DOS SELLOS DE TUS ASSETS
-import selloCertivali from '../../assets/sello-garantia.png'; // La imagen de image_30.png
-import selloCertified from '../../assets/certivali.png'; // La imagen de image_22.png
+// IMPORTAMOS LOS SELLOS ACTUALIZADOS
+import selloGarantiaGold from '../../assets/sello-garantia.png'; // La imagen de image_30.png
+import selloV_Certified from '../../assets/certivali.png'; // La imagen de image_22.png
 
 export default function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -30,7 +30,7 @@ export default function CourseDetailPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-200 font-sans pb-20">
       
-      {/* HEADER DEL CURSO - DISEÑO PREMIUM ORIGINAL */}
+      {/* HEADER DEL CURSO CON DISEÑO PREMIUM ORIGINAL */}
       <div className="bg-black border-b border-gray-800 pt-24 pb-16 px-6 shadow-2xl">
         <div className="max-w-4xl mx-auto">
           <Link to="/cursos" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors">
@@ -47,25 +47,11 @@ export default function CourseDetailPage() {
                 <strong className="text-gray-300">Dirigido a:</strong> {course.audience}
               </p>
             </div>
-            
-            {/* SELLO DE CERTIFICACIÓN COMBINADO A LA DERECHA */}
-            <div className="shrink-0 mt-4 md:mt-0 flex flex-col items-center gap-4">
-              <img 
-                src={selloCertivali} 
-                alt="CERTIVALI" 
-                className="w-40 object-contain drop-shadow-[0_0_10px_rgba(255,255,0,0.2)]" 
-              />
-              <img 
-                src={selloCertified} 
-                alt="CERTIFIED" 
-                className="w-32 object-contain drop-shadow-[0_0_15px_rgba(0,255,255,0.3)]" 
-              />
-            </div>
           </div>
         </div>
       </div>
 
-      {/* TEMARIO EXTENSO Y PROFESIONAL */}
+      {/* TEMARIO EXTENSO */}
       <div className="max-w-4xl mx-auto px-6 mt-12">
         <h2 className="text-3xl font-bold text-cyan-400 mb-8 flex items-center gap-2 tracking-tight">
           📖 Temario Oficial Completo
@@ -82,21 +68,34 @@ export default function CourseDetailPage() {
           ))}
         </div>
 
-        {/* BLOQUE DE VALIDACIÓN CURRICULAR PROFESIONAL CON LOS DOS SELLOS */}
-        <div className="mt-16 bg-[#111] border border-gray-800 p-10 rounded-2xl flex items-start gap-8 shadow-2xl">
-          <div className="flex flex-col items-center gap-6 shrink-0 pt-2">
-            <img src={selloCertivali} alt="CERTIVALI" className="w-48 object-contain drop-shadow-[0_0_10px_rgba(255,255,0,0.2)]" />
-            <img src={selloCertified} alt="CERTIFIED" className="w-40 object-contain drop-shadow-[0_0_15px_rgba(0,255,255,0.3)]" />
+        {/* NUEVO BLOQUE DE VALIDACIÓN CENTRADO Y CON TEXTO CONCRETO */}
+        <div className="mt-16 bg-black border border-gray-800 p-10 rounded-2xl flex flex-col items-center gap-10 shadow-2xl shadow-cyan-500/10">
+          
+          {/* SELLOS DE CERTIFICACIÓN COMBINADOS Y CENTRADOS */}
+          <div className="flex items-center gap-10">
+            <img 
+              src={selloGarantiaGold} 
+              alt="CERTIVALI GOLD SEAL" 
+              className="w-48 object-contain drop-shadow-[0_0_15px_rgba(255,255,0,0.3)]" 
+            />
+            <img 
+              src={selloV_Certified} 
+              alt="V CERTIFIED" 
+              className="w-40 object-contain drop-shadow-[0_0_20px_rgba(0,255,255,0.4)]" 
+            />
           </div>
-          <div className="flex-grow pt-1">
-            <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">Validación Curricular de Valor <span className="text-purple-400">Internacional</span></h3>
-            <p className="text-gray-300 leading-relaxed text-lg whitespace-pre-line">
-              Al concluir con éxito este programa, INTELIYEN otorga un diploma avalado por CERTIVALI (Institución de Validación Internacional). Todas nuestras acreditaciones cuentan con valor curricular formal, garantizando que tus nuevas competencias son reconocidas por empresas y organismos a nivel global.\n\nEl sello 'CERTIFIED' y el aval de CERTIVALI aseguran un estándar de calidad y profesionalismo que posiciona tu perfil por encima de la media en el competitivo mercado tecnológico actual.
+
+          {/* TEXTO CONCRETO Y CENTRADO */}
+          <div className="text-center max-w-3xl">
+            <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tighter">Doble Acreditación Curricular con Reconocimiento <span className="text-purple-400">Internacional</span></h3>
+            <p className="text-gray-300 leading-relaxed text-xl">
+              Obtén un diploma avalado por CERTIVALI (Institución de Validación Internacional) al finalizar el curso. Nuestras acreditaciones poseen valor curricular formal, garantizando reconocimiento profesional a nivel global en empresas y organismos líderes del sector.
             </p>
           </div>
+
         </div>
 
-        {/* CTA FINAL WHATSAPP PREMIUM */}
+        {/* CTA FINAL WHATSAPP */}
         <div className="mt-16 bg-gradient-to-r from-slate-900 to-[#0F172A] border border-cyan-500/30 p-10 rounded-2xl text-center shadow-2xl">
           <h3 className="text-3xl font-bold text-white mb-5 tracking-tight">¿Listo para transformar a tu equipo?</h3>
           <p className="text-gray-400 mb-10 text-lg">Inicia tu certificación hoy mismo con validez oficial.</p>
