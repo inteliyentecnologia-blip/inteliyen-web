@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Brain, Bot, Palette, Code, LineChart, Lock, ChevronRight, Users } from 'lucide-react';
 import { coursesData } from '../data/coursesData';
-
-// Asegúrate de que la ruta a tu imagen sea correcta. Si te marca error, ajusta los '../'
 import selloCertivali from '../../assets/certivali.png';
 
 const getCourseIcon = (id: number) => {
@@ -43,7 +41,6 @@ export default function CoursesListPage() {
             key={course.id} 
             className="group bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-[#06B6D4]/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-300 flex flex-col h-full relative overflow-hidden"
           >
-            {/* Resplandor de fondo al pasar el mouse */}
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#06B6D4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
             <div className="relative z-10 flex flex-col h-full">
