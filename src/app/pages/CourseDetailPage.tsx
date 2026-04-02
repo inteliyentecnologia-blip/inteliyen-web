@@ -1,113 +1,60 @@
-import { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
 import { coursesData } from '../data/coursesData';
-// IMPORTAMOS LOS SELLOS ACTUALIZADOS (Reemplazando a la gran V)
-import selloGoldGarantia from '../../assets/sello-garantia.png'; // La imagen de image_30.png
-import selloAcreditacionTexto from '../../assets/certivali.png'; // La imagen de image_38.png
 
-export default function CourseDetailPage() {
-  const { id } = useParams<{ id: string }>();
-  
-  // Buscar el curso por ID
-  const course = coursesData.find((c) => c.id.toString() === id);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
-
-  if (!course) {
-    return (
-      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold mb-4 text-purple-400">Curso no encontrado</h1>
-        <p className="text-gray-400 mb-8">El curso que buscas no existe o fue movido.</p>
-        <Link to="/cursos" className="px-6 py-3 bg-purple-600 rounded-full hover:bg-purple-700 transition">
-          Volver a Cursos
-        </Link>
-      </div>
-    );
-  }
-
+export default function CoursesListPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-200 font-sans pb-20">
+    <div className="min-h-screen bg-black text-white py-20 px-6 font-sans pb-32">
       
-      {/* HEADER DEL CURSO CON DISEÑO PREMIUM ORIGINAL */}
-      <div className="bg-black border-b border-gray-800 pt-24 pb-16 px-6 shadow-2xl">
-        <div className="max-w-4xl mx-auto">
-          <Link to="/cursos" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors">
-            ← Volver al catálogo
-          </Link>
-          
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
-            <div>
-              <span className="text-5xl block mb-4">{course.icon}</span>
-              <h1 className="text-3xl md:text-5xl font-bold text-white mt-4 leading-tight">
-                {course.title}
-              </h1>
-              <p className="text-lg text-gray-400 mt-4 max-w-2xl">
-                <strong className="text-gray-300">Dirigido a:</strong> {course.audience}
-              </p>
-            </div>
-          </div>
-        </div>
+      {/* TÍTULO ORIGINAL CON LETRAS DE COLORES (SIN EL MALDITO LOGO DE LA V) */}
+      <div className="text-center mb-16 px-4">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 flex items-center justify-center gap-4 tracking-tighter">
+          <span className="text-purple-400">📖</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 uppercase tracking-wide font-extrabold">
+            Cursos y Capacitación
+          </span>
+        </h1>
+        <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          Formación tecnológica de vanguardia para profesionales e impulsar tu empresa.
+        </p>
       </div>
 
-      {/* TEMARIO EXTENSO */}
-      <div className="max-w-4xl mx-auto px-6 mt-12">
-        <h2 className="text-3xl font-bold text-cyan-400 mb-8 flex items-center gap-2 tracking-tight">
-          📖 Temario Oficial Completo
-        </h2>
-        
-        <div className="space-y-6">
-          {course.modules.map((module, index) => (
-            <div key={index} className="bg-black border border-gray-800 p-8 rounded-2xl hover:border-purple-500/30 transition-colors shadow-lg">
-              {/* whitespace-pre-line para respetar los saltos de línea (\n) */}
-              <p className="text-gray-300 leading-relaxed text-lg whitespace-pre-line">
-                {module}
+      {/* GRID DE CURSOS ORIGINAL - DISEÑO PREMIUM OSCURO */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {coursesData.map((course) => (
+          <div key={course.id} className="group bg-[#0a0a0a] border border-gray-800 rounded-2xl p-8 flex flex-col hover:border-cyan-500/50 transition-colors shadow-2xl relative overflow-hidden">
+            {/* Resplandor sutil al pasar el mouse */}
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="text-5xl mb-6">{course.icon}</div>
+              
+              <h2 className="text-2xl font-extrabold text-cyan-400 mb-4 group-hover:text-cyan-300 transition-colors tracking-tight">
+                {course.title}
+              </h2>
+              
+              <p className="text-gray-400 mb-8 flex-grow leading-relaxed">
+                {course.description}
               </p>
+
+              <div className="flex flex-col gap-3 mb-8">
+                <span className="inline-flex items-center w-max px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-sm font-semibold">
+                  <span className="mr-2">↗</span> {course.audienceType}
+                </span>
+                <span className="inline-flex items-center w-max px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-semibold">
+                  <span className="mr-2">⏱</span> {course.duration}
+                </span>
+              </div>
+
+              <div className="mt-auto pt-6 border-t border-gray-800 group-hover:border-cyan-500/30 transition-colors">
+                <Link to={`/cursos/${course.id}`} className="text-gray-300 group-hover:text-white flex items-center justify-between text-base font-semibold transition-colors">
+                  Ver temario oficial completo
+                  <ChevronRight className="w-5 h-5 text-gray-500 group-hover:text-cyan-400 transition-colors" />
+                </Link>
+              </div>
             </div>
-          ))}
-        </div>
-
-        {/* BLOQUE DE VALIDACIÓN CENTRADO CON LOS DOS SELLOS JUNTOS */}
-        <div className="mt-16 bg-black border border-gray-800 p-10 rounded-2xl flex flex-col items-center gap-10 shadow-2xl shadow-cyan-500/10 relative overflow-hidden">
-          
-          {/* SELLOS DE CERTIFICACIÓN COMBINADOS Y CENTRADOS */}
-          <div className="flex items-center gap-10">
-            <img 
-              src={selloGoldGarantia} 
-              alt="CERTIVALI GOLD SEAL" 
-              className="w-48 object-contain drop-shadow-[0_0_15px_rgba(255,255,0,0.3)]" 
-            />
-            <img 
-              src={selloAcreditacionTexto} 
-              alt="CERTIVALI TEXT" 
-              className="w-40 object-contain drop-shadow-[0_0_20px_rgba(0,255,255,0.4)]" 
-            />
           </div>
-
-          {/* TEXTO CONCRETO Y CENTRADO */}
-          <div className="text-center max-w-3xl">
-            <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tighter">Doble Acreditación Curricular con Reconocimiento <span className="text-purple-400">Internacional</span></h3>
-            <p className="text-gray-300 leading-relaxed text-xl">
-              Obtén un diploma avalado por CERTIVALI (Institución de Validación Internacional) al finalizar el curso. Nuestras acreditaciones poseen valor curricular formal, garantizando reconocimiento profesional a nivel global en empresas y organismos líderes del sector.
-            </p>
-          </div>
-
-        </div>
-
-        {/* CTA FINAL WHATSAPP */}
-        <div className="mt-16 bg-gradient-to-r from-slate-900 to-[#0F172A] border border-cyan-500/30 p-10 rounded-2xl text-center shadow-2xl">
-          <h3 className="text-3xl font-bold text-white mb-5 tracking-tight">¿Listo para transformar a tu equipo?</h3>
-          <p className="text-gray-400 mb-10 text-lg">Inicia tu certificación hoy mismo con validez oficial.</p>
-          <a 
-            href="https://wa.me/523314494403" 
-            target="_blank" 
-            rel="noreferrer"
-            className="inline-block px-10 py-5 bg-cyan-500 text-black font-bold rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)]"
-          >
-            Contactar Asesor B2B
-          </a>
-        </div>
+        ))}
       </div>
     </div>
   );
