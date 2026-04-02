@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { coursesData } from '../data/coursesData';
-// IMPORTAMOS LOS SELLOS ACTUALIZADOS (Solo se usarán abajo)
-import selloGarantiaGold from '../../assets/sello-garantia.png'; 
-import selloV_Certified from '../../assets/certivali.png'; 
+// IMPORTAMOS LOS SELLOS ACTUALIZADOS
+import selloGold from '../../assets/sello-garantia.png'; // La imagen de image_51.png
+import selloAcreditacionTexto from '../../assets/certivali.png'; // La imagen de image_38.png
 
 export default function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -30,7 +30,7 @@ export default function CourseDetailPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-200 font-sans pb-20">
       
-      {/* HEADER DEL CURSO - DISEÑO LIMPIO SIN SELLOS AQUÍ */}
+      {/* HEADER DEL CURSO - DISEÑO LIMPIO ORIGINAL */}
       <div className="bg-black border-b border-gray-800 pt-24 pb-16 px-6 shadow-2xl">
         <div className="max-w-4xl mx-auto">
           <Link to="/cursos" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors">
@@ -66,28 +66,23 @@ export default function CourseDetailPage() {
           ))}
         </div>
 
-        {/* BLOQUE DE VALIDACIÓN CENTRADO CON LOS SELLOS */}
-        <div className="mt-16 bg-black border border-gray-800 p-10 rounded-2xl flex flex-col items-center gap-10 shadow-2xl shadow-cyan-500/10">
+        {/* BLOQUE DE VALIDACIÓN CORREGIDO Y PROFESIONAL - DISEÑO DEL USUARIO */}
+        <div className="mt-16 bg-black border border-gray-800 p-10 rounded-2xl flex items-center gap-10 shadow-2xl shadow-cyan-500/10">
           
-          {/* SELLOS DE CERTIFICACIÓN COMBINADOS Y CENTRADOS */}
-          <div className="flex items-center gap-10">
+          {/* SELLO GOLD - CENTRADO A MEDIA (Verticalmente center con el texto) */}
+          <div className="flex-shrink-0">
             <img 
-              src={selloGarantiaGold} 
+              src={selloGold} 
               alt="CERTIVALI GOLD SEAL" 
               className="w-48 object-contain drop-shadow-[0_0_15px_rgba(255,255,0,0.3)]" 
             />
-            <img 
-              src={selloV_Certified} 
-              alt="V CERTIFIED" 
-              className="w-40 object-contain drop-shadow-[0_0_20px_rgba(0,255,255,0.4)]" 
-            />
           </div>
 
-          {/* TEXTO CONCRETO Y CENTRADO */}
-          <div className="text-center max-w-3xl">
-            <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tighter">Doble Acreditación Curricular con Reconocimiento <span className="text-purple-400">Internacional</span></h3>
+          {/* TEXTO CONCRETO Y CENTRADO - No Doble Acreditación */}
+          <div className="flex-grow text-center max-w-3xl">
+            <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tighter">Acreditación Curricular con Reconocimiento <span className="text-purple-400">Internacional</span></h3>
             <p className="text-gray-300 leading-relaxed text-xl">
-              Obtén un diploma avalado por CERTIVALI (Institución de Validación Internacional) al finalizar el curso. Nuestras acreditaciones poseen valor curricular formal, garantizando reconocimiento profesional a nivel global en empresas y organismos líderes del sector.
+              Al concluir con éxito este programa, INTELIYEN otorga un diploma que, junto con esta certificación, posee valor curricular a nivel internacional. Tus nuevas competencias son reconocidas por empresas y organismos líderes del sector global.
             </p>
           </div>
 
