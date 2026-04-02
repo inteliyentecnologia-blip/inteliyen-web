@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { coursesData } from '../data/coursesData';
-// IMPORTAMOS LOS SELLOS ACTUALIZADOS
-import selloGarantiaGold from '../../assets/sello-garantia.png'; // La imagen de image_30.png
-import selloV_Certified from '../../assets/certivali.png'; // La imagen de image_22.png
+// IMPORTAMOS LOS SELLOS ACTUALIZADOS (Solo se usarán abajo)
+import selloGarantiaGold from '../../assets/sello-garantia.png'; 
+import selloV_Certified from '../../assets/certivali.png'; 
 
 export default function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -30,23 +30,21 @@ export default function CourseDetailPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-200 font-sans pb-20">
       
-      {/* HEADER DEL CURSO CON DISEÑO PREMIUM ORIGINAL */}
+      {/* HEADER DEL CURSO - DISEÑO LIMPIO SIN SELLOS AQUÍ */}
       <div className="bg-black border-b border-gray-800 pt-24 pb-16 px-6 shadow-2xl">
         <div className="max-w-4xl mx-auto">
           <Link to="/cursos" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors">
             ← Volver al catálogo
           </Link>
           
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
-            <div>
-              <span className="text-5xl block mb-4">{course.icon}</span>
-              <h1 className="text-3xl md:text-5xl font-bold text-white mt-4 leading-tight">
-                {course.title}
-              </h1>
-              <p className="text-lg text-gray-400 mt-4 max-w-2xl">
-                <strong className="text-gray-300">Dirigido a:</strong> {course.audience}
-              </p>
-            </div>
+          <div>
+            <span className="text-5xl block mb-4">{course.icon}</span>
+            <h1 className="text-3xl md:text-5xl font-bold text-white mt-4 leading-tight">
+              {course.title}
+            </h1>
+            <p className="text-lg text-gray-400 mt-4 max-w-3xl">
+              <strong className="text-gray-300">Dirigido a:</strong> {course.audience}
+            </p>
           </div>
         </div>
       </div>
@@ -68,7 +66,7 @@ export default function CourseDetailPage() {
           ))}
         </div>
 
-        {/* NUEVO BLOQUE DE VALIDACIÓN CENTRADO Y CON TEXTO CONCRETO */}
+        {/* BLOQUE DE VALIDACIÓN CENTRADO CON LOS SELLOS */}
         <div className="mt-16 bg-black border border-gray-800 p-10 rounded-2xl flex flex-col items-center gap-10 shadow-2xl shadow-cyan-500/10">
           
           {/* SELLOS DE CERTIFICACIÓN COMBINADOS Y CENTRADOS */}
