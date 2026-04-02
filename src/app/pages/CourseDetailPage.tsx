@@ -14,7 +14,7 @@ export default function CourseDetailPage() {
   return (
     <div className="min-h-screen bg-black text-white pb-20">
       <div className="max-w-5xl mx-auto px-6 pt-24">
-        <Link to="/cursos" className="text-cyan-400 hover:text-cyan-300 mb-8 inline-block font-bold uppercase tracking-widest text-sm">← Volver a Cursos</Link>
+        <Link to="/cursos" className="text-cyan-400 hover:text-cyan-300 mb-8 inline-block uppercase text-sm">← Volver a Cursos</Link>
 
         <div className="bg-[#050505] border border-gray-800 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden mb-12">
           <span className="text-6xl mb-6 block">{course.icon}</span>
@@ -22,8 +22,8 @@ export default function CourseDetailPage() {
             {course.title}
           </h1>
           <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-3xl">{course.description}</p>
-          <p className="text-cyan-400 mb-10 text-lg">🎯 <strong>Dirigido a:</strong> {course.audience}</p>
-          <a href="https://wa.me/523314494403" target="_blank" className="inline-block bg-gradient-to-r from-[#A855F7] to-[#00F2FF] px-12 py-5 rounded-full font-bold text-lg shadow-[0_0_20px_rgba(0,242,255,0.4)]">Solicitar Información por WhatsApp</a>
+          <p className="text-cyan-400 mb-10 text-lg uppercase">🎯 Dirigido a: {course.audience}</p>
+          <a href="https://wa.me/523314494403" target="_blank" className="inline-block bg-gradient-to-r from-[#A855F7] to-[#00F2FF] px-12 py-5 rounded-full text-lg shadow-[0_0_20px_rgba(0,242,255,0.4)]">Solicitar Información por WhatsApp</a>
         </div>
 
         <h2 className="text-4xl text-center mb-12 uppercase">Temario del Curso</h2>
@@ -32,7 +32,7 @@ export default function CourseDetailPage() {
             const parts = m.split('\n•');
             return (
               <div key={i} className="bg-[#050505] border border-gray-800 p-10 rounded-[2rem] hover:border-[#A855F7]/40 transition-colors">
-                <h3 className="text-2xl text-cyan-400 mb-6">{parts[0]}</h3>
+                <h3 className="text-2xl text-cyan-400 mb-6 uppercase">{parts[0]}</h3>
                 <ul className="space-y-4">
                   {parts.slice(1).map((bullet, bi) => (
                     <li key={bi} className="flex items-start gap-3">
