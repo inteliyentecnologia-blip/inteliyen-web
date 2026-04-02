@@ -25,7 +25,7 @@ El proyecto está conectado a Vercel (CI/CD). Cualquier cambio en la rama main s
 
 Bash
 git add .
-git commit -m "feat: descripción de tu cambio"
+git commit -m "feat: descripción de tu cambio se modifico la opciones de temario"
 git push
 📊 Integraciones y Tracking
 Google Analytics 4: ID G-STGZC7M85N (Inyectado en index.html).
