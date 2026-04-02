@@ -5,10 +5,10 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Projects } from './components/Projects'; 
-import { CoursesListPage } from './pages/CoursesListPage';
 
-// ESTA ES LA CLAVE QUE FALTABA GUARDAR AQUÍ:
-import { CourseDetailPage } from './pages/CourseDetailPage'; 
+// AQUÍ ESTÁ LA CORRECCIÓN: Le quitamos las llaves { } a los dos y borramos el texto fantasma
+import CoursesListPage from './pages/CoursesListPage';
+import CourseDetailPage from './pages/CourseDetailPage'; 
 
 function App() {
   return (
