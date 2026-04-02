@@ -1,19 +1,9 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { CheckCircle2, Brain, Briefcase, Search, Settings } from 'lucide-react';
 import { coursesData } from '../data/coursesData';
-import selloGold from '../../assets/sello-garantia.png';
-
-// Función para asignar un icono chingón a cada módulo automáticamente
-const getModuleIcon = (index: number) => {
-  switch (index) {
-    case 0: return <Brain className="w-8 h-8 text-pink-400" />;
-    case 1: return <Briefcase className="w-8 h-8 text-amber-600" />;
-    case 2: return <Search className="w-8 h-8 text-slate-300" />;
-    case 3: return <Settings className="w-8 h-8 text-cyan-400" />;
-    default: return <CheckCircle2 className="w-8 h-8 text-purple-500" />;
-  }
-};
+// IMPORTAMOS LOS SELLOS ACTUALIZADOS (Reemplazando a la gran V)
+import selloGoldGarantia from '../../assets/sello-garantia.png'; // La imagen de image_30.png
+import selloAcreditacionTexto from '../../assets/certivali.png'; // La imagen de image_38.png
 
 export default function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -33,52 +23,66 @@ export default function CourseDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans pb-20">
+    // SE ELIMINÓ EL font-sans PARA QUE TU TIPOGRAFÍA NEÓN CHINGONA VUELVA A FUNCIONAR
+    <div className="min-h-screen bg-black text-white pb-20">
       
-      {/* HEADER RESTAURADO A TU DISEÑO ORIGINAL */}
+      {/* HEADER RESTAURADO A TU DISEÑO ORIGINAL CHINGÓN */}
       <div className="pt-24 pb-16 px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto relative">
           <Link to="/cursos" className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors">
-            ← Volver a Cursos
+            ← Volver al catálogo
           </Link>
           
-          <div className="bg-[#0A0E17] border border-gray-800 rounded-[2rem] p-8 md:p-12 shadow-2xl">
-            <span className="text-6xl block mb-6">{course.icon}</span>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-6 tracking-tight">
-              {course.title}
-            </h1>
-            <p className="text-lg text-gray-300 mb-8 max-w-3xl leading-relaxed">
-              {course.description}
-            </p>
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-12 relative z-10">
+            <div>
+              <span className="text-6xl block mb-6">{course.icon}</span>
+              {/* TU TIPOGRAFÍA NEÓN EXACTA */}
+              <h1 className="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-6 tracking-tight leading-tight">
+                {course.title}
+              </h1>
+              <p className="text-lg text-gray-300 mb-10 max-w-2xl leading-relaxed">
+                <strong className="text-gray-200">Dirigido a:</strong> {course.audience}
+              </p>
 
-            <div className="flex flex-wrap gap-4 mb-10">
-              <span className="inline-flex items-center px-4 py-2 rounded-full border border-purple-500/50 text-purple-400 font-semibold bg-purple-500/10">
-                <span className="mr-2">↗</span> {course.audienceType}
-              </span>
-              <span className="inline-flex items-center px-4 py-2 rounded-full border border-cyan-500/50 text-cyan-400 font-semibold bg-cyan-500/10">
-                <span className="mr-2">⏱</span> {course.duration}
-              </span>
+              {/* BOTÓN WHATSAPP DEGRADADO EXACTO */}
+              <a 
+                href="https://wa.me/523314494403" 
+                target="_blank" 
+                rel="noreferrer"
+                className="inline-block px-10 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-bold rounded-full text-lg hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+              >
+                Solicitar Información por WhatsApp
+              </a>
             </div>
-
-            <a 
-              href="https://wa.me/523314494403" 
-              target="_blank" 
-              rel="noreferrer"
-              className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-bold rounded-full text-lg hover:opacity-90 transition-opacity"
-            >
-              Solicitar Información por WhatsApp
-            </a>
+            
+            {/* SELLOS DE CERTIFICACIÓN COMBINADOS PROFESIONALMENTE (REEMPLAZANDO LA V) */}
+            <div className="shrink-0 mt-8 md:mt-0 flex flex-col items-center gap-6">
+              <img 
+                src={selloGoldGarantia} 
+                alt="CERTIVALI GOLD SEAL" 
+                className="w-48 object-contain drop-shadow-[0_0_15px_rgba(255,255,0,0.3)]" 
+              />
+              <img 
+                src={selloAcreditacionTexto} 
+                alt="CERTIVALI TEXT" 
+                className="w-40 object-contain drop-shadow-[0_0_20px_rgba(0,255,255,0.4)]" 
+              />
+            </div>
           </div>
+          
+          {/* Resplandor neón de fondo sutil */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none"></div>
         </div>
       </div>
 
-      {/* TEMARIO - RESTAURADO A GRID DE 2 COLUMNAS CON PALOMITAS MORADAS */}
-      <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-4xl font-extrabold text-white text-center mb-12 tracking-wide">
-          Temario del Curso
+      {/* TEMARIO OFICIAL COMPLETO - RESTAURADO A GRID DE 2 COLUMNAS */}
+      <div className="max-w-5xl mx-auto px-6 mt-16">
+        <h2 className="text-3xl font-bold text-white mb-12 flex items-center justify-center gap-2 tracking-tight">
+          📖 Temario Oficial Completo
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* GRID DE 2 COLUMNAS EXACTO */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {course.modules.map((moduleString, index) => {
             // Separamos el título del módulo de los bullets
             const parts = moduleString.split('\n•');
@@ -86,69 +90,75 @@ export default function CourseDetailPage() {
             const bullets = parts.slice(1);
 
             return (
-              <div key={index} className="bg-[#0A0E17] border border-gray-800 p-8 rounded-3xl flex flex-col h-full shadow-lg">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="mt-1 shrink-0">
-                    {getModuleIcon(index)}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2 leading-tight">
-                      {moduleTitle}
-                    </h3>
-                    <p className="text-cyan-500 text-sm font-semibold">
-                      Aprender a integrar IA en los procesos diarios.
-                    </p>
-                  </div>
-                </div>
+              <div key={index} className="bg-[#0A0E17] border border-gray-800 p-8 rounded-3xl flex flex-col h-full hover:border-purple-500/30 transition-colors shadow-2xl relative overflow-hidden group">
+                {/* Resplandor sutil al pasar el mouse */}
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
-                <ul className="space-y-4 flex-grow">
-                  {bullets.map((bullet, bIndex) => (
-                    <li key={bIndex} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-purple-500 shrink-0 mt-0.5" />
-                      <span className="text-gray-300 text-sm leading-relaxed">
-                        {bullet.trim()}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="relative z-10 flex flex-col h-full">
+                  <h3 className="text-2xl font-bold text-cyan-400 mb-6 group-hover:text-cyan-300 transition-colors tracking-tight leading-tight">
+                    {moduleTitle}
+                  </h3>
+
+                  <ul className="space-y-5 flex-grow">
+                    {bullets.map((bullet, bIndex) => (
+                      <li key={bIndex} className="flex items-start gap-3">
+                        {/* TUS PALOMITAS MORADAS EXACTAS */}
+                        <svg className="w-5 h-5 text-purple-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-gray-300 text-base leading-relaxed">
+                          {bullet.trim()}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             );
           })}
         </div>
 
-        {/* VALIDACIÓN CURRICULAR - RESTAURADA A TU DISEÑO DORADO Y SIN LA 'V' */}
-        <div className="mt-16 bg-[#0A0E17] border border-yellow-500/20 p-8 md:p-12 rounded-[2rem] flex flex-col md:flex-row items-center md:items-start gap-10 shadow-2xl">
-          <div className="shrink-0">
+        {/* BLOQUE DE VALIDACIÓN - RESTAURADO A TU DISEÑO OSCURO CON LOS SELLOS */}
+        <div className="mt-20 bg-[#0A0E17] border border-gray-800 p-10 rounded-3xl flex flex-col items-center gap-10 shadow-2xl shadow-cyan-500/10">
+          
+          <div className="flex items-center gap-10">
             <img 
-              src={selloGold} 
-              alt="CERTIVALI" 
-              className="w-48 object-contain drop-shadow-[0_0_20px_rgba(234,179,8,0.3)]" 
+              src={selloGoldGarantia} 
+              alt="CERTIVALI GOLD SEAL" 
+              className="w-48 object-contain drop-shadow-[0_0_15px_rgba(255,255,0,0.3)]" 
+            />
+            <img 
+              src={selloAcreditacionTexto} 
+              alt="CERTIVALI TEXT" 
+              className="w-40 object-contain drop-shadow-[0_0_20px_rgba(0,255,255,0.4)]" 
             />
           </div>
-          <div className="flex-grow text-center md:text-left pt-2">
-            <h3 className="text-3xl md:text-4xl font-extrabold text-yellow-500 mb-6 tracking-tight leading-tight">
-              Validación Curricular de Valor <br className="hidden md:block" /> Internacional
-            </h3>
-            <p className="text-gray-300 leading-relaxed text-lg">
-              Al concluir con éxito este programa, INTELIYEN otorga un diploma avalado por <strong className="text-white">CERTIVALI (Institución de Validación Internacional)</strong>. Todas nuestras acreditaciones cuentan con <strong className="text-yellow-500">valor curricular formal</strong>, garantizando que tus nuevas competencias son reconocidas por empresas y organismos a nivel global.
+
+          <div className="text-center max-w-3xl">
+            <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tighter">Doble Acreditación Curricular con Reconocimiento <span className="text-purple-400">Internacional</span></h3>
+            <p className="text-gray-300 leading-relaxed text-xl">
+              Al concluir con éxito este programa, INTELIYEN otorga un diploma avalado por CERTIVALI (Institución de Validación Internacional) al finalizar el curso. Nuestras acreditaciones poseen valor curricular formal, garantizando reconocimiento profesional a nivel global en empresas y organismos líderes del sector.
             </p>
           </div>
+
         </div>
 
-        {/* CTA FINAL - RESTAURADO A TU DISEÑO MORADO */}
-        <div className="mt-12 bg-gradient-to-b from-[#0A0E17] to-purple-900/20 border border-purple-500/20 p-12 rounded-[2rem] text-center shadow-2xl">
-          <h3 className="text-4xl font-extrabold text-white mb-4 tracking-tight">¿Dudas sobre este programa?</h3>
-          <p className="text-gray-400 mb-10 text-lg max-w-2xl mx-auto">
-            Nuestro equipo puede adaptar este temario a las necesidades específicas de tu empresa o perfil profesional.
-          </p>
-          <a 
-            href="https://wa.me/523314494403" 
-            target="_blank" 
-            rel="noreferrer"
-            className="inline-block px-10 py-4 bg-white text-black font-extrabold rounded-full text-lg hover:bg-gray-200 transition-colors"
-          >
-            Hablar con un Asesor
-          </a>
+        {/* CTA FINAL WHATSAPP RESTAURADO AL 100% */}
+        <div className="mt-20 bg-gradient-to-r from-slate-900 to-[#0F172A] border border-cyan-500/30 p-10 rounded-2xl text-center shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+          
+          <div className="relative z-10">
+            <h3 className="text-3xl font-bold text-white mb-5 tracking-tight">¿Listo para transformar a tu equipo?</h3>
+            <p className="text-gray-400 mb-10 text-lg">Inicia tu certificación hoy mismo con validez oficial.</p>
+            <a 
+              href="https://wa.me/523314494403" 
+              target="_blank" 
+              rel="noreferrer"
+              className="inline-block px-10 py-5 bg-cyan-500 text-black font-bold rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+            >
+              Contactar Asesor B2B
+            </a>
+          </div>
         </div>
 
       </div>
