@@ -6,10 +6,10 @@ export const coursesData = [
     description: 'Nivel Inicial. Domina el Marco 4D, ChatGPT, Claude y Gemini para trabajar menos y lograr más.',
     audienceType: 'Corporativo y Personal',
     duration: '4 semanas',
-    audience: 'Público en general, emprendedores, administrativos y vendedores con CERO conocimiento previo.',
+    audience: 'Público en general, emprendedores, administrativos, vendedores y cualquier persona con CERO conocimiento de tecnología.',
     modules: [
       "Módulo 1: Mi Primer Asistente y el 'Zoológico' de la IA\n• Las 4 Reglas de Oro (El Marco 4D): Delegar, Describir, Discernir y Diligencia.\n• Los 3 Ingredientes Mágicos (Cómo piensa el robot).\n• El Zoológico: ChatGPT, Claude, Gemini y Perplexity.",
-      "Módulo 2: Cómo hablarle al Robot (Ingeniería de Prompts)\n• Saber explicar: Instrucciones claras y directas.\n• Las 3 piezas del Prompt: Producto, Proceso y Comportamiento.\n• Trucos: Few-Shot e inyección de contexto.",
+      "Módulo 2: Cómo hablarle al Robot (Ingeniería de Prompts)\n• Saber explicar: Instrucciones claras y directas.\n• Las 3 piezas del Prompt: Producto, Proceso y Comportamiento.\n• Trucos: Inyectar contexto y pensar paso a paso.",
       "Módulo 3: La Máquina de Ventas y Marketing\n• Marketing de Contenidos: Calendarios y anuncios persuasivos en 5 min.\n• Ventas: Cold Emails B2B hiper-personalizados.\n• Atención al Cliente: Respuestas rápidas con empatía.",
       "Módulo 4: Herramientas del Día a Día\n• NotebookLM: Preguntas directas a tus PDFs.\n• Canva Magic Studio: Presentaciones con un clic.\n• IA en tu teléfono: Dictado de tareas en tiempo real."
     ]
@@ -70,7 +70,7 @@ export const coursesData = [
     modules: [
       "Módulo 1: Agilidad en la Era IA\n• SCRUM y el rol del Orquestador de IA.",
       "Módulo 2: Gestión de Backlog\n• Historias de usuario y Story Points con Claude.\n• División automática de Épicas.",
-      "Módulo 3: Automatización de Ceremonias\n• Daily Standups y minutas automáticas.\n• Integración con Jira y Asana.",
+      "Módulo 3: Automatización de Ceremonias\n• Daily Standups y resúmenes de bloqueos.\n• Integración con Jira y Asana.",
       "Módulo 4: Predicción de Riesgos\n• Análisis predictivo de retrasos.\n• Reportes ejecutivos automáticos."
     ]
   },
