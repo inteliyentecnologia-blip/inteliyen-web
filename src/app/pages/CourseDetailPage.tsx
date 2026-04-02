@@ -1,14 +1,16 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Clock, TrendingUp, Award, CheckCircle2, AlertTriangle } from 'lucide-react';
-import { courses } from '../data/coursesData';
+import { ArrowLeft, ShieldCheck, CheckCircle2 } from 'lucide-react';
+// 1. Aquí está el fix: Importamos el nombre correcto de la base de datos
+import { coursesData } from '../data/coursesData';
+// 2. Importamos el sello de Certivali
+import selloCertivali from '../../assets/certivali.png';
 
-// --- IMPORTACIÓN DEL SELLO (Asegúrate que la ruta sea correcta) ---
-import selloCertivali from '../../assets/sello-garantia.png';
-
-export function CourseDetailPage() {
+export default function CourseDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const course = courses.find((c) => c.id === id);
+  
+  // 3. Aquí está el fix 2: Convertimos el ID para que empate perfecto sin error de TypeScript
+  const course = coursesData.find((c) => c.id.toString() === id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,176 +18,85 @@ export function CourseDetailPage() {
 
   if (!course) {
     return (
-      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold mb-4 text-purple-400">Curso no encontrado</h1>
-        <p className="text-gray-400 mb-8">El curso que buscas no existe o fue movido.</p>
-        <Link to="/cursos" className="px-6 py-3 bg-purple-600 rounded-full hover:bg-purple-700 transition">
+      <div className="min-h-screen bg-[#0F172A] text-white flex flex-col items-center justify-center">
+        <h1 className="text-4xl font-bold mb-4 text-[#06B6D4]">Curso no encontrado</h1>
+        <p className="text-slate-400 mb-8">El curso que buscas no existe o fue movido.</p>
+        <Link to="/cursos" className="px-6 py-3 bg-[#06B6D4] text-slate-900 font-bold rounded-lg hover:bg-cyan-400 transition">
           Volver a Cursos
         </Link>
       </div>
     );
   }
 
-  // --- CONFIGURACIÓN CENTRAL DE WHATSAPP ---
-  const whatsappNumber = "523314494403"; 
-  const whatsappMessage = `Hola, me interesa obtener más información sobre el curso de ${course.title}.`;
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header flotante */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-purple-500/10">
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative z-50">
-          <Link to="/" className="flex items-center gap-4">
-            <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent tracking-wider" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-              INTELIYEN
-            </span>
+    <div className="min-h-screen bg-[#0F172A] text-slate-200 font-sans pb-20">
+      {/* Hero Section */}
+      <div className="bg-slate-900 border-b border-slate-800 pt-24 pb-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <Link to="/cursos" className="inline-flex items-center text-[#06B6D4] hover:text-cyan-300 mb-8 transition-colors">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Volver al catálogo
           </Link>
-          <Link to="/cursos" className="flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="hidden sm:inline">Volver a Cursos</span>
-          </Link>
-        </nav>
-      </header>
-
-      <main className="pt-32 pb-20 px-6 relative overflow-hidden">
-        {/* Efecto de luz de fondo */}
-        <div 
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20"
-          style={{ backgroundColor: course.color?.from || '#9333ea' }}
-        ></div>
-
-        <div className="max-w-5xl mx-auto relative z-10">
           
-          {/* Ficha Principal del Curso */}
-          <div className="bg-black/60 backdrop-blur-xl border border-gray-800 rounded-3xl p-8 md:p-12 mb-16">
-            <div className="text-7xl mb-6">{course.emoji}</div>
-            
-            <h1 
-              className="text-4xl md:text-6xl font-bold mb-6"
-              style={{
-                fontFamily: 'Orbitron, sans-serif',
-                background: course.color ? `linear-gradient(135deg, ${course.color.from}, ${course.color.to})` : 'none',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}
-            >
-              {course.title}
-            </h1>
-
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl">
-              {course.description}
-            </p>
-
-            {/* Etiquetas */}
-            <div className="flex flex-wrap gap-4 mb-10">
-              <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">
-                <TrendingUp className="w-5 h-5" />
-                <span className="font-bold">{course.level}</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-cyan-500/10 text-cyan-400 rounded-full border border-cyan-500/20">
-                <Clock className="w-5 h-5" />
-                <span className="font-bold">{course.duration}</span>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-800 pt-8 mt-8">
-              <a 
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105 w-full md:w-auto"
-              >
-                Solicitar Información por WhatsApp
-              </a>
-            </div>
-          </div>
-
-          {/* SECCIÓN DEL TEMARIO (Módulos) */}
-          {course.modules && course.modules.length > 0 && (
-            <div className="mb-16">
-              <h2 
-                className="text-3xl md:text-4xl font-bold mb-10 text-center"
-                style={{ fontFamily: 'Orbitron, sans-serif' }}
-              >
-                Temario del Curso
-              </h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {course.modules.map((modulo, index) => (
-                  <div 
-                    key={index} 
-                    className="bg-gray-900/50 border border-gray-800 hover:border-gray-600 rounded-2xl p-6 transition-colors duration-300"
-                  >
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="text-4xl">{modulo.emoji}</div>
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-2">{modulo.title}</h3>
-                        <p className="text-sm text-cyan-400 font-medium mb-4">{modulo.objective}</p>
-                      </div>
-                    </div>
-                    
-                    <ul className="space-y-3 mb-6">
-                      {modulo.topics.map((topic, tIndex) => (
-                        <li key={tIndex} className="flex items-start gap-3 text-gray-300 text-sm">
-                          <CheckCircle2 className="w-5 h-5 text-purple-500 shrink-0 mt-0.5" />
-                          <span>{topic}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {modulo.error && (
-                      <div className="mt-auto bg-red-950/30 border border-red-900/50 rounded-lg p-3 flex items-start gap-3">
-                        <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                        <p className="text-sm text-red-200">{modulo.error}</p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* === ACREDITACIÓN INTERNACIONAL CERTIVALI === */}
-          <div className="bg-gray-900/50 border border-yellow-500/20 rounded-3xl p-10 flex flex-col md:flex-row items-center gap-8 shadow-2xl shadow-yellow-950/20 relative mb-16 overflow-hidden">
-            {/* Subtle background blur circle for yellow glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl opacity-50"></div>
-
-            <div className="relative z-10 w-40 md:w-56 shrink-0">
-              <img
-                src={selloCertivali}
-                alt="Sello de Acreditación Internacional CERTIVALI"
-                className="w-full h-auto drop-shadow-[0_0_20px_rgba(234,179,8,0.3)] transform hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-
-            <div className="relative z-10 text-center md:text-left flex-grow space-y-4">
-              <h3 className="text-3xl font-bold text-yellow-400" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-                Validación Curricular de Valor Internacional
-              </h3>
-              <p className="text-gray-300 text-lg leading-relaxed max-w-2xl" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Al concluir con éxito este programa, <span className="text-white font-medium">INTELIYEN</span> otorga un diploma avalado por <strong className="text-yellow-100 font-bold">CERTIVALI (Institución de Validación Internacional)</strong>. Todas nuestras acreditaciones cuentan con <strong className="text-yellow-100">valor curricular formal</strong>, garantizando que tus nuevas competencias son reconocidas por empresas y organismos a nivel global.
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+            <div>
+              <span className="text-xs font-bold tracking-wider text-[#06B6D4] uppercase bg-[#06B6D4]/10 px-3 py-1 rounded-full">
+                {course.route}
+              </span>
+              <h1 className="text-3xl md:text-5xl font-bold text-white mt-4 leading-tight">
+                {course.title}
+              </h1>
+              <p className="text-lg text-slate-400 mt-4">
+                <strong className="text-slate-300">Dirigido a:</strong> {course.audience}
               </p>
             </div>
-          </div>
-
-          {/* CTA Final */}
-          <div className="text-center bg-gradient-to-r from-purple-900/20 to-cyan-900/20 border border-purple-500/20 rounded-3xl p-10">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">¿Dudas sobre este programa?</h3>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Nuestro equipo puede adaptar este temario a las necesidades específicas de tu empresa o perfil profesional.</p>
             
-            <a 
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-3 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-colors"
-            >
-              Hablar con un Asesor
-            </a>
+            {/* Sello de Garantía CERTIVALI */}
+            <div className="shrink-0 mt-4 md:mt-0">
+              <img 
+                src={selloCertivali} 
+                alt="Avalado por Certivali" 
+                className="w-32 drop-shadow-[0_0_15px_rgba(6,182,212,0.3)] object-contain" 
+              />
+            </div>
           </div>
-
         </div>
-      </main>
+      </div>
+
+      {/* Contenido del Curso (Módulos) */}
+      <div className="max-w-4xl mx-auto px-6 mt-12">
+        <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+          <ShieldCheck className="text-[#06B6D4] w-6 h-6" />
+          Temario Oficial
+        </h2>
+        
+        <div className="space-y-4">
+          {course.modules.map((module, index) => (
+            <div key={index} className="bg-slate-900 border border-slate-800 p-6 rounded-xl flex items-start gap-4 hover:border-[#06B6D4]/30 transition-colors">
+              <div className="bg-[#0F172A] p-2 rounded-lg shrink-0 border border-slate-800">
+                <CheckCircle2 className="w-6 h-6 text-[#06B6D4]" />
+              </div>
+              <p className="text-slate-300 leading-relaxed text-lg pt-1">
+                {module}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Final (Botón de WhatsApp) */}
+        <div className="mt-16 bg-gradient-to-r from-slate-900 to-[#0F172A] border border-[#06B6D4]/30 p-8 rounded-2xl text-center">
+          <h3 className="text-2xl font-bold text-white mb-4">¿Listo para transformar a tu equipo?</h3>
+          <p className="text-slate-400 mb-8">Inicia tu certificación hoy mismo con validez oficial.</p>
+          <a 
+            href="https://wa.me/523314494403" 
+            target="_blank" 
+            rel="noreferrer"
+            className="inline-block px-8 py-4 bg-[#06B6D4] text-slate-900 font-bold rounded-lg hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+          >
+            Contactar Asesor B2B
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
