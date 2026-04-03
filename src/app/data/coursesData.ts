@@ -1,4 +1,31 @@
-export const coursesData = [
+// Le decimos a TypeScript exactamente qué forma tiene nuestra data
+export interface CourseModule {
+  emoji: string;
+  title: string;
+  objective: string;
+  topics: string[];
+  error: string | null;
+}
+
+export interface CourseColor {
+  from: string;
+  to: string;
+}
+
+export interface Course {
+  id: string; // Obligamos a que el ID sea texto siempre
+  emoji: string;
+  title: string;
+  description: string;
+  level: string;
+  duration: string;
+  price: string;
+  status: 'available' | 'coming-soon';
+  color: CourseColor;
+  modules: CourseModule[];
+}
+
+export const courses: Course[] = [
   {
     id: 'ia-productividad',
     emoji: '🏆',
