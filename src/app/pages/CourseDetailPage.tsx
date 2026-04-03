@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, AlertCircle, Clock, TrendingUp } from 'lucide-react';
-import { courses } from '../data/coursesData';
+import { coursesData } from '../data/coursesData';
+import selloGold from '../../assets/sello-garantia.png';
 
 export default function CourseDetailPage() {
   const params = useParams<{ id?: string; courseId?: string }>(); 
@@ -9,7 +10,7 @@ export default function CourseDetailPage() {
   const [isVisible, setIsVisible] = useState(false);
 
   const idToUse = params.id || params.courseId;
-  const course = courses.find((c) => c.id === idToUse);
+  const course = coursesData?.find((c) => c.id === idToUse);
 
   useEffect(() => {
     if (!course) {
@@ -89,7 +90,7 @@ export default function CourseDetailPage() {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {course.modules.map((module, index) => (
+              {course.modules?.map((module, index) => (
                 <div key={index} className="bg-gradient-to-br from-purple-900/10 to-cyan-900/10 border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300">
                   <div className="flex items-start gap-3 mb-4">
                     <span className="text-3xl">{module.emoji}</span>
@@ -122,11 +123,10 @@ export default function CourseDetailPage() {
               ))}
             </div>
 
-            {/* SECCIÓN DE VALIDACIÓN CURRICULAR CON LA RUTA ABSOLUTA */}
             <div className="mt-16 bg-[#050505] border border-yellow-500/20 p-10 md:p-12 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-10 shadow-2xl relative">
               <div className="w-48 shrink-0 flex justify-center">
                 <img 
-                  src="/sello-garantia.png" 
+                  src={selloGold} 
                   alt="Sello de Acreditación Internacional CERTIVALI" 
                   className="max-w-full h-auto object-contain drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]" 
                 />
