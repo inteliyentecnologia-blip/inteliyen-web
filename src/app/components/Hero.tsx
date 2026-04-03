@@ -19,17 +19,22 @@ export function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/30 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <div className="flex justify-center mb-6">
-          <img src={logo} alt="Inteliyen" className="h-28 md:h-36 lg:h-40 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]" />
+        {/* LOGO MÁS GRANDE Y SEPARACIÓN AUMENTADA (mb-10 md:mb-12) */}
+        <div className="flex justify-center mb-10 md:mb-12">
+          <img 
+            src={logo} 
+            alt="Inteliyen" 
+            className="h-36 md:h-48 lg:h-56 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]" 
+          />
         </div>
 
-        {/* INTELIYEN MÁS PEQUEÑO */}
+        {/* INTELIYEN MÁS PEQUEÑO (Preservado de tu código) */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 bg-gradient-to-r from-purple-400 via-pink-300 to-cyan-400 bg-clip-text text-transparent tracking-wider font-bold" style={{ fontFamily: 'Orbitron, sans-serif' }}>
           INTELIYEN
         </h1>
 
-        {/* FRASE PRINCIPAL COMO LA TIENES EN LA FOTO */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-6 max-w-4xl mx-auto leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
+        {/* FRASE PRINCIPAL MÁS CHICA (text-xl md:text-2xl lg:text-3xl) */}
+        <h2 className="text-xl md:text-2xl lg:text-3xl text-white font-bold mb-6 max-w-4xl mx-auto leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
           Lleva tu empresa al siguiente nivel con{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_15px_rgba(6,182,212,0.6)]">
             Inteligencia Artificial.
