@@ -151,7 +151,7 @@ export default function CourseDetailPage() {
                   className="text-2xl md:text-3xl font-extrabold text-[#FFD700] mb-6"
                   style={{ fontFamily: 'Orbitron, sans-serif' }}
                 >
-                  Validación Curricular de Valor Internacional
+                  Certificación con Validez Internacional
                 </h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
                   Al concluir con éxito este programa, <strong className="text-white">INTELIYEN</strong> otorga un diploma avalado por <strong className="text-white">CERTIVALI (Institución de Validación Internacional)</strong>. Todas nuestras acreditaciones cuentan con <strong className="text-white">valor curricular formal</strong>, garantizando que tus nuevas competencias son reconocidas por empresas y organismos a nivel global.
