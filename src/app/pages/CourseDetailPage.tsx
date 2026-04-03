@@ -3,7 +3,6 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, AlertCircle, Clock, TrendingUp } from 'lucide-react';
 import { courses } from '../data/coursesData';
 
-// IMPORTACIONES CORRECTAS A TUS ASSETS LOCALES (Cero basura de figma)
 import logo from '../../assets/logo.png';
 import selloGold from '../../assets/sello-garantia.png';
 import certivaliLogo from '../../assets/certivali.png'; 
@@ -81,12 +80,12 @@ const pythonModules = [
 ];
 
 export default function CourseDetailPage() {
-  const params = useParams<{ id?: string; courseId?: string }>();
+  const params = useParams<{ id?: string; courseId?: string }>(); 
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
 
   const idToUse = params.id || params.courseId;
-  const course = courses?.find(c => c.id === idToUse);
+  const course = courses?.find((c) => c.id === idToUse);
 
   useEffect(() => {
     if (!course) {
@@ -97,9 +96,7 @@ export default function CourseDetailPage() {
     window.scrollTo(0, 0);
   }, [course, navigate]);
 
-  if (!course) {
-    return null;
-  }
+  if (!course) return null;
 
   const whatsappNumber = "523314494403"; 
   const whatsappMessage = encodeURIComponent(`¡Hola! Me interesa inscribirme al curso de ${course.title} ${course.emoji}`);
@@ -107,7 +104,6 @@ export default function CourseDetailPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-purple-500/10">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-4">
@@ -116,55 +112,28 @@ export default function CourseDetailPage() {
               INTELIYEN
             </span>
           </Link>
-          <Link
-            to="/cursos"
-            className="flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-colors"
-          >
+          <Link to="/cursos" className="flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-colors">
             <ArrowLeft className="w-5 h-5" />
             <span>Volver a Cursos</span>
           </Link>
         </nav>
       </header>
 
-      {/* Main Content */}
-      <main className="pt-32 pb-20 px-6 relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(180deg, #000000 0%, #0a0014 50%, #000000 100%)'
-        }}
-      >
-        {/* Gradient orbs */}
+      <main className="pt-32 pb-20 px-6 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #000000 0%, #0a0014 50%, #000000 100%)' }}>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl"></div>
 
         <div className="max-w-5xl mx-auto relative z-10">
-          {/* Course Header */}
-          <div
-            className={`transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
+          
+          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="relative group">
-              <div
-                className="absolute -inset-0.5 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-500"
-                style={{
-                  background: `linear-gradient(135deg, ${course.color.from}, ${course.color.to})`
-                }}
-              ></div>
+              <div className="absolute -inset-0.5 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-500" style={{ background: `linear-gradient(135deg, ${course.color.from}, ${course.color.to})` }}></div>
               
               <div className="relative bg-black/80 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-8 md:p-12">
-                {/* Course Title */}
                 <div className="flex flex-col md:flex-row md:items-center gap-6 mb-6">
                   <div className="text-7xl">{course.emoji}</div>
                   <div className="flex-1">
-                    <h1
-                      className="text-4xl md:text-5xl font-bold mb-4"
-                      style={{
-                        fontFamily: 'Orbitron, sans-serif',
-                        background: `linear-gradient(135deg, ${course.color.from}, ${course.color.to})`,
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent'
-                      }}
-                    >
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Orbitron, sans-serif', background: `linear-gradient(135deg, ${course.color.from}, ${course.color.to})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                       {course.title}
                     </h1>
                     <div className="flex flex-wrap gap-3">
@@ -185,27 +154,15 @@ export default function CourseDetailPage() {
                   </div>
                 </div>
 
-                {/* Course Description */}
-                <p className="text-gray-300 text-lg mb-8">
-                  {course.description}
-                </p>
+                <p className="text-gray-300 text-lg mb-8">{course.description}</p>
 
-                {/* CTA Button */}
-                {course.status === 'available' && (
-                  <div className="flex justify-center">
-                    <a
-                      href={whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-10 py-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full text-white font-bold hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300 hover:scale-105"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
-                    >
-                      Inscribirme Ahora
-                    </a>
-                  </div>
-                )}
+                <div className="flex justify-start">
+                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Solicitar Información por WhatsApp
+                  </a>
+                </div>
 
-                {/* LOGO DE CERTIVALI ACTUALIZADO */}
+                {/* AQUÍ ESTÁ EL LOGO CON EL TAMAÑO PERFECTO Y SIN EL CÍRCULO INVENTADO */}
                 <img 
                   src={certivaliLogo} 
                   alt="Avalado por Certivali" 
@@ -215,27 +172,15 @@ export default function CourseDetailPage() {
             </div>
           </div>
 
-          {/* Course Content */}
           {idToUse === 'python-fundamental' ? (
-            // Python Course with detailed curriculum
-            <div
-              className={`mt-12 transition-all duration-1000 delay-200 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-            >
-              <h2
-                className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-8 text-center"
-                style={{ fontFamily: 'Orbitron, sans-serif' }}
-              >
+            <div className={`mt-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-8 text-center" style={{ fontFamily: 'Orbitron, sans-serif' }}>
                 Temario del Curso
               </h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 {pythonModules.map((module, index) => (
-                  <div
-                    key={index}
-                    className="bg-gradient-to-br from-purple-900/10 to-cyan-900/10 border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300"
-                  >
+                  <div key={index} className="bg-gradient-to-br from-purple-900/10 to-cyan-900/10 border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300">
                     <div className="flex items-start gap-3 mb-4">
                       <span className="text-3xl">{module.emoji}</span>
                       <div className="flex-1">
@@ -267,7 +212,6 @@ export default function CourseDetailPage() {
                 ))}
               </div>
 
-              {/* CTA Footer */}
               <div className="mt-12 text-center">
                 <div className="relative inline-block group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
@@ -275,13 +219,7 @@ export default function CourseDetailPage() {
                     <p className="text-gray-400 mb-6">
                       🎓 Curso 100% gratuito • 📱 Soporte vía WhatsApp • 🏆 Certificado al finalizar
                     </p>
-                    <a
-                      href={whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-10 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
-                    >
+                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-block px-10 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105" style={{ fontFamily: 'Inter, sans-serif' }}>
                       Comienza Tu Viaje en Python
                     </a>
                   </div>
@@ -289,22 +227,12 @@ export default function CourseDetailPage() {
               </div>
             </div>
           ) : (
-            // Other courses
             <>
               {course.status === 'coming-soon' ? (
-                <div
-                  className={`mt-12 transition-all duration-1000 delay-200 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
-                >
+                <div className={`mt-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                   <div className="text-center">
                     <div className="relative inline-block">
-                      <div
-                        className="absolute -inset-0.5 rounded-2xl blur opacity-20"
-                        style={{
-                          background: `linear-gradient(135deg, ${course.color.from}, ${course.color.to})`
-                        }}
-                      ></div>
+                      <div className="absolute -inset-0.5 rounded-2xl blur opacity-20" style={{ background: `linear-gradient(135deg, ${course.color.from}, ${course.color.to})` }}></div>
                       <div className="relative bg-black/80 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-12">
                         <div className="text-6xl mb-6">🚀</div>
                         <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4" style={{ fontFamily: 'Orbitron, sans-serif' }}>
@@ -314,10 +242,7 @@ export default function CourseDetailPage() {
                           Estamos trabajando en el contenido de este curso para ofrecerte la mejor experiencia de aprendizaje. 
                           ¡Mantente atento a las novedades!
                         </p>
-                        <Link
-                          to="/cursos"
-                          className="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
-                        >
+                        <Link to="/cursos" className="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105">
                           Ver Cursos Disponibles
                         </Link>
                       </div>
