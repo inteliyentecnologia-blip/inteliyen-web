@@ -3,6 +3,9 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, AlertCircle, Clock, TrendingUp } from 'lucide-react';
 import { courses } from '../data/coursesData';
 
+// IMPORTACIÓN CORRECTA
+import selloGold from '../../assets/sello-garantia.png';
+
 export default function CourseDetailPage() {
   const params = useParams<{ id?: string; courseId?: string }>(); 
   const navigate = useNavigate();
@@ -124,11 +127,14 @@ export default function CourseDetailPage() {
 
             <div className="mt-16 bg-[#050505] border border-yellow-500/20 p-10 md:p-12 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-10 shadow-2xl relative">
               <div className="w-48 shrink-0 flex justify-center">
+                
+                {/* AHORA SÍ ESTÁ LA VARIABLE PUESTA CORRECTAMENTE */}
                 <img 
-                  src="/sello-garantia.png" 
+                  src={selloGold} 
                   alt="Sello de Acreditación Internacional CERTIVALI" 
                   className="max-w-full h-auto object-contain drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]" 
                 />
+                
               </div>
               <div className="text-center md:text-left flex-1">
                 <h3 
