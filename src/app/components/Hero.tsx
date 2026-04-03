@@ -1,4 +1,5 @@
-import logoSvg from '../../assets/logo.svg';
+// Regresamos al PNG que tiene SOLO el cerebro para que no salga texto doble
+import logoCerebro from '../../assets/logo.png';
 
 export function Hero() {
   return (
@@ -12,16 +13,16 @@ export function Hero() {
 
       <div className="relative z-10 flex flex-col items-center text-center">
         
-        {/* LOGO SVG: Importado correctamente, más pequeño y con brillo */}
-        <div className="mb-6">
+        {/* EL CEREBRO: Solo el icono, centrado y con brillo */}
+        <div className="mb-4">
           <img 
-            src={logoSvg} 
+            src={logoCerebro} 
             alt="Cerebro Inteliyen" 
             className="h-32 md:h-48 lg:h-56 w-auto drop-shadow-[0_0_25px_rgba(168,85,247,0.6)]"
           />
         </div>
 
-        {/* NOMBRE: Tipografía Orbitron Medium con los colores neón vivos */}
+        {/* EL NOMBRE: Una sola vez, con Orbitron y colores neon vivos */}
         <h1 
           className="text-6xl md:text-8xl lg:text-[120px] font-medium tracking-[0.1em] leading-none"
           style={{ fontFamily: "'Orbitron', sans-serif" }}
