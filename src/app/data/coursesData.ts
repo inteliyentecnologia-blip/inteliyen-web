@@ -29,7 +29,7 @@ export const courses: Course[] = [
     description: 'Nivel Inicial. Domina el Marco 4D, ChatGPT, Claude y Gemini para automatizar tareas, redactar documentos complejos y organizar tu empresa.',
     targetAudience: 'Público en general, emprendedores, administrativos, vendedores y cualquier persona con CERO conocimiento de tecnología que quiera trabajar menos y lograr más.',
     level: 'Corporativo y Personal',
-    duration: '4 semanas',
+    duration: 'Programa completo',
     status: 'available',
     color: { from: '#00F2FF', to: '#007BFF' },
     modules: [
@@ -74,7 +74,7 @@ export const courses: Course[] = [
     description: 'Nivel Intermedio. Construye "Empleados Digitales" autónomos que trabajen por ti 24/7.',
     targetAudience: 'Dueños de negocio, líderes de operaciones y personas que ya usan ChatGPT pero quieren construir "Empleados Digitales" que trabajen 24/7.',
     level: 'Corporativo y Personal',
-    duration: '5 semanas',
+    duration: 'Programa completo',
     status: 'available',
     color: { from: '#FFD700', to: '#F59E0B' },
     modules: [
@@ -119,7 +119,7 @@ export const courses: Course[] = [
     description: 'Genera recursos visuales Premium en tiempo récord. Midjourney, Runway y ElevenLabs.',
     targetAudience: 'Diseñadores, mercadólogos, community managers y creativos que necesitan recursos visuales Premium en tiempo récord.',
     level: 'Corporativo y Personal',
-    duration: '5 semanas',
+    duration: 'Programa completo',
     status: 'available',
     color: { from: '#F97316', to: '#EF4444' },
     modules: [
@@ -163,7 +163,7 @@ export const courses: Course[] = [
     description: 'Acelera tu escritura de código y refactorización utilizando Cursor, GitHub Copilot y agentes de terminal.',
     targetAudience: 'Programadores (Juniors y Seniors), Arquitectos de Software y estudiantes de ingeniería.',
     level: 'Ingeniería y Gestión',
-    duration: '6 semanas',
+    duration: 'Programa completo',
     status: 'available',
     color: { from: '#A855F7', to: '#D946EF' },
     modules: [
@@ -208,7 +208,7 @@ export const courses: Course[] = [
     description: 'Automatización de ceremonias ágiles, análisis predictivo de riesgos y reportes ejecutivos.',
     targetAudience: 'Líderes de equipo, Product Owners, Scrum Masters y directores de departamento.',
     level: 'Gestión Técnica',
-    duration: '4 semanas',
+    duration: 'Programa completo',
     status: 'available',
     color: { from: '#10B981', to: '#34D399' },
     modules: [
@@ -252,7 +252,7 @@ export const courses: Course[] = [
     description: 'Protege tu empresa contra las nuevas amenazas generadas por IA, phishing avanzado y deepfakes.',
     targetAudience: 'Directores de TI (CTOs, CISOs), equipos legales, recursos humanos y encargados de proteger los datos de la empresa.',
     level: 'Seguridad Corporativa',
-    duration: '3 semanas',
+    duration: 'Programa completo',
     status: 'available',
     color: { from: '#EC4899', to: '#F43F5E' },
     modules: [
