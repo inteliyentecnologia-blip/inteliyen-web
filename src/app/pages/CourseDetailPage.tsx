@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, AlertCircle, Clock, TrendingUp } from 'lucide-react';
 import { courses } from '../data/coursesData';
-import selloGold from '../../assets/sello-garantia.png';
 
 export default function CourseDetailPage() {
   const params = useParams<{ id?: string; courseId?: string }>(); 
@@ -123,11 +122,11 @@ export default function CourseDetailPage() {
               ))}
             </div>
 
-            {/* SECCIÓN DE VALIDACIÓN CURRICULAR ACTUALIZADA EXACTA A TU DISEÑO */}
+            {/* SECCIÓN DE VALIDACIÓN CURRICULAR CON LA RUTA ABSOLUTA */}
             <div className="mt-16 bg-[#050505] border border-yellow-500/20 p-10 md:p-12 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-10 shadow-2xl relative">
               <div className="w-48 shrink-0 flex justify-center">
                 <img 
-                  src={selloGold} 
+                  src="/sello-garantia.png" 
                   alt="Sello de Acreditación Internacional CERTIVALI" 
                   className="max-w-full h-auto object-contain drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]" 
                 />
