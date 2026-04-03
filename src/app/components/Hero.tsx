@@ -15,32 +15,32 @@ export function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20">
+      {/* Orbes de fondo intactos */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[120px] animate-pulse"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/30 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <div className="flex justify-center mb-8">
-          <img src={logo} alt="Inteliyen" className="h-32 md:h-40 lg:h-48 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]" />
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        
+        {/* LOGO DEL CEREBRO (Ajustado para que sea un acento visual elegante) */}
+        <div className="flex justify-center mb-10">
+          <img src={logo} alt="Inteliyen" className="h-28 md:h-36 lg:h-40 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)] animate-pulse" style={{ animationDuration: '3s' }} />
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 bg-gradient-to-r from-purple-400 via-pink-300 to-cyan-400 bg-clip-text text-transparent tracking-wider" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-          INTELIYEN
-        </h1>
-
-        {/* AQUÍ ESTÁ EL TEXTO NUEVO CON EL TAMAÑO CORREGIDO (más chico y estético) */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-10 max-w-4xl mx-auto leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
-          Lleva tu empresa al siguiente nivel con{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_15px_rgba(6,182,212,0.6)]">
+        {/* TITULAR PRINCIPAL: Balanceado, gigante y sin cortes feos */}
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-12 tracking-tight leading-[1.15]" style={{ fontFamily: 'Inter, sans-serif' }}>
+          Lleva tu empresa al siguiente nivel con <br className="hidden md:block" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
             Inteligencia Artificial.
           </span>
-        </h2>
+        </h1>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {/* BOTONES CENTRADOS Y RESPIRANDO */}
+        <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
           <a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all duration-300 flex items-center gap-2 text-lg hover:scale-105"
+            className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-all duration-300 flex items-center gap-2 text-lg hover:scale-105"
             style={{ fontFamily: 'Inter, sans-serif' }}
           >
             Quiero empezar
