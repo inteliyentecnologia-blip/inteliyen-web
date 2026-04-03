@@ -1,24 +1,23 @@
-import { Link } from 'react-router-dom';
-import logoPro from '../../assets/logo-pro.png'; // IMPORTAMOS TU LOGO PRO
+import logoPro from '../../assets/logo-pro.png';
 
 export function Hero() {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-10"
     >
-      {/* ORBES DE LUZ DE FONDO (Igual que en tus cursos, le dan profundidad pero están limpios) */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-[128px] animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/15 rounded-full blur-[128px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+      {/* ORBES DE FONDO SUTILES */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[150px] animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '2s' }}></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center">
         
-        {/* EL LOGO PRO: GIGANTE, CENTRADO Y CON UN BRILLO SUTIL */}
+        {/* LOGO PRO ESCALADO (Masivo y Centrado) */}
         <div className="flex justify-center items-center">
-        <img 
+          <img 
             src={logoPro} 
             alt="Inteliyen Pro" 
-            className="h-64 md:h-80 lg:h-96 w-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-transform duration-500 hover:scale-105" 
+            className="h-[400px] md:h-[550px] lg:h-[700px] w-auto object-contain drop-shadow-[0_0_50px_rgba(168,85,247,0.25)] transition-transform duration-700 hover:scale-105" 
           />
         </div>
 
