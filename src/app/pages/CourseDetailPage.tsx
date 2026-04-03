@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, AlertCircle, Clock, TrendingUp } from 'lucide-react';
 import { courses } from '../data/coursesData';
+import selloGold from '../../assets/sello-garantia.png';
 
 export default function CourseDetailPage() {
-  // Arreglo del useParams para que TypeScript no marque error
   const params = useParams<{ id?: string; courseId?: string }>(); 
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
@@ -122,6 +122,29 @@ export default function CourseDetailPage() {
                 </div>
               ))}
             </div>
+
+            {/* SECCIÓN DE VALIDACIÓN CURRICULAR ACTUALIZADA EXACTA A TU DISEÑO */}
+            <div className="mt-16 bg-[#050505] border border-yellow-500/20 p-10 md:p-12 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-10 shadow-2xl relative">
+              <div className="w-48 shrink-0 flex justify-center">
+                <img 
+                  src={selloGold} 
+                  alt="Sello de Acreditación Internacional CERTIVALI" 
+                  className="max-w-full h-auto object-contain drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]" 
+                />
+              </div>
+              <div className="text-center md:text-left flex-1">
+                <h3 
+                  className="text-2xl md:text-3xl font-extrabold text-[#FFD700] mb-6"
+                  style={{ fontFamily: 'Orbitron, sans-serif' }}
+                >
+                  Validación Curricular de Valor Internacional
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Al concluir con éxito este programa, <strong className="text-white">INTELIYEN</strong> otorga un diploma avalado por <strong className="text-white">CERTIVALI (Institución de Validación Internacional)</strong>. Todas nuestras acreditaciones cuentan con <strong className="text-white">valor curricular formal</strong>, garantizando que tus nuevas competencias son reconocidas por empresas y organismos a nivel global.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </main>
