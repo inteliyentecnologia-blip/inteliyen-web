@@ -38,7 +38,7 @@ export const courses: Course[] = [
         topics: [
           'Las 4 Reglas de Oro (El Marco 4D): Delegar, Describir, Discernir y Diligencia.', 
           'Los 3 Ingredientes Mágicos: Algoritmos, Datos y Poder de Cómputo (Cómo piensa el robot).', 
-          'El Zoológico de las IAs: ChatGPT (Lógica y matemáticas), Claude (El mejor escritor), Gemini (Conectado a Google) y Perplexity (Búsquedas exactas).'
+          'El Zoológico de las IAs: ChatGPT (Lógica y matemáticas), Claude (Textos que suenan humanos), Gemini (Conectado a Google Drive/Docs) y Perplexity (Búsquedas exactas sin publicidad).'
         ] 
       },
       { 
@@ -58,9 +58,9 @@ export const courses: Course[] = [
         ] 
       },
       { 
-        title: 'Módulo 4: Herramientas de IA para el Día a Día', 
+        title: 'Módulo 4: Herramientas de IA para el Día a Día (Implementación)', 
         topics: [
-          'NotebookLM: Cómo subir un PDF o manual de 100 páginas y hacerle preguntas directas.', 
+          'NotebookLM: Cómo subir un PDF o manual de 100 páginas y hacerle preguntas directas (El fin de leer aburrido).', 
           'Canva Magic Studio: Crear presentaciones y posts visuales con un solo clic.', 
           'IA en tu teléfono: Cómo usar la voz para dictarle tareas a la IA mientras vas en el tráfico o en el gimnasio.'
         ] 
