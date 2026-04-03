@@ -4,7 +4,7 @@ import { ArrowLeft, CheckCircle2, AlertCircle, Clock, TrendingUp } from 'lucide-
 import { courses } from '../data/coursesData';
 
 import selloGold from '../../assets/sello-garantia.png';
-import certivaliLogo from '../../assets/certivali.png'; // <-- IMPORTAMOS EL LOGO PEQUEÑO
+import certivaliLogo from '../../assets/certivali.png'; 
 
 export default function CourseDetailPage() {
   const params = useParams<{ id?: string; courseId?: string }>(); 
@@ -83,11 +83,11 @@ export default function CourseDetailPage() {
                   </a>
                 </div>
 
-                {/* AQUÍ ESTÁ EL LOGO EN LA ESQUINA INFERIOR DERECHA */}
+                {/* LOGO DE CERTIVALI ACTUALIZADO: MÁS GRANDE Y CON BRILLO */}
                 <img 
                   src={certivaliLogo} 
                   alt="Avalado por Certivali" 
-                  className="absolute bottom-6 right-6 md:bottom-8 md:right-8 h-6 md:h-8 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity"
+                  className="absolute bottom-6 right-6 md:bottom-8 md:right-8 h-8 md:h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]"
                 />
               </div>
             </div>
