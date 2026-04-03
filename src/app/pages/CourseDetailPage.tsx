@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle2, AlertCircle, Clock, TrendingUp } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Clock, TrendingUp, Target } from 'lucide-react';
 import { courses } from '../data/coursesData';
 
 import logo from '../../assets/logo.png';
@@ -32,6 +32,7 @@ export default function CourseDetailPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-purple-500/10">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-4">
@@ -53,18 +54,20 @@ export default function CourseDetailPage() {
 
         <div className="max-w-5xl mx-auto relative z-10">
           
+          {/* TARJETA PRINCIPAL DEL CURSO */}
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="relative group">
               <div className="absolute -inset-0.5 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-500" style={{ background: `linear-gradient(135deg, ${course.color.from}, ${course.color.to})` }}></div>
               
               <div className="relative bg-black/80 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-8 md:p-12">
-                <div className="flex flex-col md:flex-row md:items-center gap-6 mb-6">
-                  <div className="text-7xl">{course.emoji}</div>
+                <div className="flex flex-col md:flex-row md:items-start gap-6 mb-8">
+                  <div className="text-7xl pt-2">{course.emoji}</div>
                   <div className="flex-1">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Orbitron, sans-serif', background: `linear-gradient(135deg, ${course.color.from}, ${course.color.to})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'Orbitron, sans-serif', background: `linear-gradient(135deg, ${course.color.from}, ${course.color.to})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                       {course.title}
                     </h1>
-                    <div className="flex flex-wrap gap-3">
+                    
+                    <div className="flex flex-wrap gap-3 mb-6">
                       <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm border border-purple-500/30">
                         <TrendingUp className="w-4 h-4" />
                         {course.level}
@@ -73,21 +76,34 @@ export default function CourseDetailPage() {
                         <Clock className="w-4 h-4" />
                         {course.duration}
                       </div>
-                      {/* ELIMINADA LA ETIQUETA VERDE DE INSCRIPCIONES ABIERTAS */}
                     </div>
+
+                    <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+                      {course.description}
+                    </p>
+
+                    {/* SECCIÓN "DIRIGIDO A" INTEGRADA */}
+                    <div className="bg-white/5 border border-white/10 rounded-xl p-5 mb-8">
+                      <div className="flex items-start gap-3">
+                        <Target className="w-6 h-6 flex-shrink-0" style={{ color: course.color.from }} />
+                        <p className="text-gray-300 leading-relaxed">
+                          <strong className="text-white block mb-1">Dirigido a:</strong>
+                          {course.targetAudience}
+                        </p>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
 
-                <p className="text-gray-300 text-lg mb-8">{course.description}</p>
-
-                {/* BOTÓN ORIGINAL RESTAURADO */}
+                {/* BOTÓN ORIGINAL DE WHATSAPP */}
                 <div className="flex justify-start">
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105" style={{ fontFamily: 'Inter, sans-serif' }}>
                     Solicitar Información por WhatsApp
                   </a>
                 </div>
 
-                {/* LOGO DE CERTIVALI EN LA ESQUINA */}
+                {/* LOGO CERTIVALI EN LA ESQUINA (COMO LO TENÍAS Y QUERÍAS) */}
                 <img 
                   src={certivaliLogo} 
                   alt="Avalado por Certivali" 
@@ -97,6 +113,7 @@ export default function CourseDetailPage() {
             </div>
           </div>
 
+          {/* TEMARIO DINÁMICO */}
           <div className={`mt-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold mb-10 text-center" style={{ fontFamily: 'Orbitron, sans-serif' }}>
               Temario del Curso
@@ -104,34 +121,18 @@ export default function CourseDetailPage() {
 
             <div className="grid md:grid-cols-2 gap-6">
               {course.modules?.map((module, index) => (
-                <div key={index} className="bg-gradient-to-br from-purple-900/10 to-cyan-900/10 border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300">
-                  <div className="flex items-start gap-3 mb-4">
-                    <span className="text-3xl">{module.emoji}</span>
-                    <div className="flex-1">
-                      <h4 className="text-lg font-bold text-white mb-2" style={{ fontFamily: 'Orbitron, sans-serif', color: course.color.from }}>
-                        {module.title}
-                      </h4>
-                      <p className="text-sm text-cyan-400 italic mb-4">
-                        Objetivo: {module.objective}
-                      </p>
-                    </div>
-                  </div>
-
-                  <ul className="space-y-3 mb-4">
+                <div key={index} className="bg-gradient-to-br from-purple-900/10 to-cyan-900/10 border border-purple-500/20 rounded-xl p-8 hover:border-purple-500/40 transition-all duration-300">
+                  <h4 className="text-xl font-bold text-white mb-6" style={{ fontFamily: 'Orbitron, sans-serif', color: course.color.from }}>
+                    {module.title}
+                  </h4>
+                  <ul className="space-y-4">
                     {module.topics.map((topic, topicIndex) => (
-                      <li key={topicIndex} className="flex items-start gap-2 text-gray-300 text-sm">
-                        <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: course.color.from }} />
+                      <li key={topicIndex} className="flex items-start gap-3 text-gray-300 text-sm md:text-base leading-relaxed">
+                        <CheckCircle2 className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: course.color.from }} />
                         <span>{topic}</span>
                       </li>
                     ))}
                   </ul>
-
-                  {module.error && (
-                    <div className="flex items-start gap-2 bg-red-900/20 border border-red-500/30 rounded-lg p-4 mt-6">
-                      <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-                      <p className="text-red-300 text-sm">{module.error}</p>
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
@@ -150,7 +151,7 @@ export default function CourseDetailPage() {
                   className="text-2xl md:text-3xl font-extrabold text-[#FFD700] mb-6"
                   style={{ fontFamily: 'Orbitron, sans-serif' }}
                 >
-                  Certificaciòn con Validez Internacional
+                  Validación Curricular de Valor Internacional
                 </h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
                   Al concluir con éxito este programa, <strong className="text-white">INTELIYEN</strong> otorga un diploma avalado por <strong className="text-white">CERTIVALI (Institución de Validación Internacional)</strong>. Todas nuestras acreditaciones cuentan con <strong className="text-white">valor curricular formal</strong>, garantizando que tus nuevas competencias son reconocidas por empresas y organismos a nivel global.
