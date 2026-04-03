@@ -36,12 +36,6 @@ export function Hero() {
           </span>
         </h2>
 
-        {/* INFORMACIÓN DE REGRESO, PERO MÁS CHICA Y DISCRETA */}
-        <div className="text-sm md:text-base text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-          <p className="text-gray-300 font-semibold mb-1">Software a tu medida. Capacitación que impulsa a tu equipo.</p>
-          <p>Desarrollamos software a la medida y capacitamos a los equipos que lo operan. En INTELIYEN, la tecnología no llega sola.</p>
-        </div>
-
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
             href={whatsappLink}
