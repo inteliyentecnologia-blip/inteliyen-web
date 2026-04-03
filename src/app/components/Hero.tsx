@@ -1,65 +1,27 @@
-import { ArrowRight } from 'lucide-react';
-import logo from '../../assets/logo.png';
+import { Link } from 'react-router-dom';
+import logoPro from '../../assets/logo-pro.png'; // IMPORTAMOS TU LOGO PRO
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const whatsappNumber = "523314494403";
-  const whatsappMessage = `Hola, me interesa platicar con un asesor de INTELIYEN. Quiero saber cómo la tecnología y la IA pueden ayudar a mi empresa.`;
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[120px] animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/30 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20"
+    >
+      {/* ORBES DE LUZ DE FONDO (Igual que en tus cursos, le dan profundidad pero están limpios) */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-[128px] animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/15 rounded-full blur-[128px] animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        {/* LOGO MÁS GRANDE Y SEPARACIÓN AUMENTADA (mb-10 md:mb-12) */}
-        <div className="flex justify-center mb-10 md:mb-12">
+        
+        {/* EL LOGO PRO: GIGANTE, CENTRADO Y CON UN BRILLO SUTIL */}
+        <div className="flex justify-center items-center">
           <img 
-            src={logo} 
-            alt="Inteliyen" 
-            className="h-36 md:h-48 lg:h-56 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]" 
+            src={logoPro} 
+            alt="Inteliyen Pro" 
+            className="h-48 md:h-64 lg:h-80 w-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-transform duration-500 hover:scale-105" 
           />
         </div>
 
-        {/* INTELIYEN MÁS PEQUEÑO (Preservado de tu código) */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 bg-gradient-to-r from-purple-400 via-pink-300 to-cyan-400 bg-clip-text text-transparent tracking-wider font-bold" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-          INTELIYEN
-        </h1>
-
-        {/* FRASE PRINCIPAL MÁS CHICA (text-xl md:text-2xl lg:text-3xl) */}
-        <h2 className="text-xl md:text-2xl lg:text-3xl text-white font-bold mb-6 max-w-4xl mx-auto leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
-          Lleva tu empresa al siguiente nivel con{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_15px_rgba(6,182,212,0.6)]">
-            Inteligencia Artificial.
-          </span>
-        </h2>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-bold hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all duration-300 flex items-center gap-2 text-lg hover:scale-105"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            Quiero empezar
-            <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-          </a>
-          <button
-            onClick={() => scrollToSection('services')}
-            className="px-8 py-4 border-2 border-purple-500/50 rounded-full text-purple-300 font-semibold hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 text-lg"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            Ver servicios
-          </button>
-        </div>
       </div>
     </section>
   );
