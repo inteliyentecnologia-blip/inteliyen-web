@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, AlertCircle, Clock, TrendingUp } from 'lucide-react';
 import { courses } from '../data/coursesData';
 
+// IMPORTACIONES CORRECTAS A TUS ASSETS LOCALES (Cero basura de figma)
 import logo from '../../assets/logo.png';
 import selloGold from '../../assets/sello-garantia.png';
 import certivaliLogo from '../../assets/certivali.png'; 
@@ -191,33 +192,25 @@ export default function CourseDetailPage() {
 
                 {/* CTA Button */}
                 {course.status === 'available' && (
-                  <div className="flex justify-center md:justify-start">
+                  <div className="flex justify-center">
                     <a
                       href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
+                      className="px-10 py-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full text-white font-bold hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300 hover:scale-105"
                       style={{ fontFamily: 'Inter, sans-serif' }}
                     >
-                      Solicitar Información por WhatsApp
+                      Inscribirme Ahora
                     </a>
                   </div>
                 )}
 
-                {/* LOGO DE CERTIVALI ACTUALIZADO: DENTRO DE CÍRCULO DESVANECIDO */}
-                <div 
-                  className="absolute bottom-6 right-6 md:bottom-8 md:right-8 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition-transform hover:scale-105"
-                  style={{ 
-                    backgroundColor: `${course.color.from}33`, // Color base con opacidad
-                    boxShadow: `0 0 20px ${course.color.from}50` // Resplandor exterior suave
-                  }}
-                >
-                  <img 
-                    src={certivaliLogo} 
-                    alt="Avalado por Certivali" 
-                    className="h-8 md:h-10 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-                  />
-                </div>
+                {/* LOGO DE CERTIVALI ACTUALIZADO */}
+                <img 
+                  src={certivaliLogo} 
+                  alt="Avalado por Certivali" 
+                  className="absolute bottom-6 right-6 md:bottom-8 md:right-8 h-8 md:h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]"
+                />
               </div>
             </div>
           </div>
@@ -327,23 +320,6 @@ export default function CourseDetailPage() {
                         >
                           Ver Cursos Disponibles
                         </Link>
-
-                        {/* El círculo con el logo de CERTIVALI, para los cursos que vendrán pronto. */}
-                        <div className="absolute bottom-8 right-8">
-                          <div
-                            className="w-16 h-16 rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition-transform hover:scale-105"
-                            style={{
-                              backgroundColor: `${course.color.from}33`,
-                              boxShadow: `0 0 20px ${course.color.from}50`
-                            }}
-                          >
-                            <img 
-                              src={certivaliLogo} 
-                              alt="Avalado por CERTIVALI" 
-                              className="h-8 md:h-10 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" 
-                            />
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
