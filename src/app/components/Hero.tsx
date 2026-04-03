@@ -15,26 +15,46 @@ export function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20">
-      {/* Orbes de fondo intactos */}
+      {/* Fondo con luces de neón */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[120px] animate-pulse"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/30 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         
-        {/* LOGO DEL CEREBRO (Ajustado para que sea un acento visual elegante) */}
-        <div className="flex justify-center mb-10">
-          <img src={logo} alt="Inteliyen" className="h-28 md:h-36 lg:h-40 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)] animate-pulse" style={{ animationDuration: '3s' }} />
+        {/* LOGO: Tamaño perfecto */}
+        <div className="flex justify-center mb-6">
+          <img src={logo} alt="Inteliyen Logo" className="h-24 md:h-32 lg:h-36 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)] animate-pulse" style={{ animationDuration: '4s' }} />
         </div>
 
-        {/* TITULAR PRINCIPAL: Balanceado, gigante y sin cortes feos */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-12 tracking-tight leading-[1.15]" style={{ fontFamily: 'Inter, sans-serif' }}>
+        {/* MARCA: Elegante y espaciada */}
+        <h2 
+          className="text-sm md:text-base text-purple-400 font-bold tracking-[0.4em] mb-4 uppercase" 
+          style={{ fontFamily: 'Orbitron, sans-serif' }}
+        >
+          Inteliyen
+        </h2>
+
+        {/* TITULAR: Tu frase matona en un tamaño equilibrado */}
+        <h1 
+          className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-[1.15]" 
+          style={{ fontFamily: 'Inter, sans-serif' }}
+        >
           Lleva tu empresa al siguiente nivel con <br className="hidden md:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_15px_rgba(6,182,212,0.4)]">
             Inteligencia Artificial.
           </span>
         </h1>
 
-        {/* BOTONES CENTRADOS Y RESPIRANDO */}
+        {/* INFORMACIÓN DE INTELIYEN: Lo que querías recuperar pero bien acomodado */}
+        <p 
+          className="text-base md:text-lg lg:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed" 
+          style={{ fontFamily: 'Inter, sans-serif' }}
+        >
+          <strong className="text-white font-semibold">Software a tu medida y capacitación que impulsa a tu equipo.</strong><br className="hidden sm:block" />
+          Desarrollamos soluciones a la medida y enseñamos a operarlas. En INTELIYEN, la tecnología no llega sola.
+        </p>
+
+        {/* BOTONES */}
         <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
           <a
             href={whatsappLink}
