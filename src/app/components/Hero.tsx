@@ -27,7 +27,7 @@ export function Hero() {
           INTELIYEN
         </h1>
 
-        {/* AQUÍ ESTÁ EL TEXTO NUEVO, BLANCO Y AZUL BRILLANTE */}
+        {/* AQUÍ ESTÁ EL TEXTO NUEVO EXACTAMENTE COMO LO PEDISTE */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-12 max-w-4xl mx-auto leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
           Lleva tu empresa al siguiente nivel con{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_15px_rgba(6,182,212,0.6)]">
