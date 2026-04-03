@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, BookOpen, Clock, TrendingUp, ChevronRight } from 'lucide-react';
+// IMPORTAMOS COMO 'courses' PARA EVITAR EL ERROR DE IMPORTACIÓN
 import { courses } from '../data/coursesData';
 
 export default function CoursesListPage() {
@@ -45,7 +46,8 @@ export default function CoursesListPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {courses.map((course, index) => (
+            {/* AGREGAMOS EL OPTIONAL CHAINING Y MAPAMOS SOBRE 'courses' */}
+            {courses?.map((course, index) => (
               <div key={course.id} className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
                 <Link to={course.status === 'available' ? `/cursos/${course.id}` : '#'} className={`group relative block h-full ${course.status === 'coming-soon' ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
                   

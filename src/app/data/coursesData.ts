@@ -1,4 +1,3 @@
-// Le decimos a TypeScript exactamente qué forma tiene nuestra data
 export interface CourseModule {
   emoji: string;
   title: string;
@@ -13,7 +12,7 @@ export interface CourseColor {
 }
 
 export interface Course {
-  id: string; // Obligamos a que el ID sea texto siempre
+  id: string; 
   emoji: string;
   title: string;
   description: string;
@@ -35,7 +34,7 @@ export const courses: Course[] = [
     duration: '4 semanas',
     price: 'Inscripciones Abiertas',
     status: 'available',
-    color: { from: '#00F2FF', to: '#007BFF' }, // Cyan a Azul
+    color: { from: '#00F2FF', to: '#007BFF' },
     modules: [
       { emoji: '🚀', title: 'Módulo 1: El Zoológico de la IA', objective: 'Conocer las herramientas clave.', topics: ['Las 4 Reglas de Oro (El Marco 4D): Delegar, Describir, Discernir y Diligencia.', 'Los 3 Ingredientes Mágicos (Cómo piensa el robot).', 'El Zoológico: ChatGPT, Claude, Gemini y Perplexity.'], error: 'Error Común: Usar ChatGPT para todo en lugar de la IA especializada.' },
       { emoji: '🧠', title: 'Módulo 2: Ingeniería de Prompts', objective: 'Hablarle al robot para que entienda.', topics: ['Instrucciones claras y directas.', 'Las 3 piezas del Prompt: Producto, Proceso y Comportamiento.', 'Trucos de experto: Inyectar contexto y pensar paso a paso.'], error: 'Error Común: Dar instrucciones ambiguas y frustrarse con respuestas genéricas.' },
@@ -52,7 +51,7 @@ export const courses: Course[] = [
     duration: '5 semanas',
     price: 'Inscripciones Abiertas',
     status: 'available',
-    color: { from: '#FFD700', to: '#F59E0B' }, // Amarillo a Ámbar
+    color: { from: '#FFD700', to: '#F59E0B' },
     modules: [
       { emoji: '🤖', title: 'Módulo 1: De Chatbots a Agentes Autónomos', objective: 'Entender la autonomía digital.', topics: ['La diferencia real: Decisión vs Respuesta.', 'Ecosistema Open Source: n8n y ahorro de costos.', 'Mapeo de procesos automatizables.'], error: 'Error Común: Intentar automatizar procesos que ni los humanos entienden bien.' },
       { emoji: '🧠', title: 'Módulo 2: El Cerebro del Agente (Claude)', objective: 'Darle lógica a tu empleado digital.', topics: ['Por qué Claude es superior en lógica de reglas.', 'System Prompts y árboles de decisión.', 'Gestión de memoria del agente.'], error: null },
@@ -69,7 +68,7 @@ export const courses: Course[] = [
     duration: '5 semanas',
     price: 'Inscripciones Abiertas',
     status: 'available',
-    color: { from: '#F97316', to: '#EF4444' }, // Naranja a Rojo
+    color: { from: '#F97316', to: '#EF4444' },
     modules: [
       { emoji: '📸', title: 'Módulo 1: Dirección de Arte Prompteada', objective: 'Dominar la generación de imágenes.', topics: ['Batalla: Midjourney V6 vs DALL-E 3.', 'Anatomía de un Prompt visual: Iluminación y Estilo.', 'Consistencia de personajes para marcas.'], error: 'Error Común: Generar imágenes con rostros deformes o texto mal escrito por falta de parámetros.' },
       { emoji: '🎨', title: 'Módulo 2: Diseño Gráfico y Branding', objective: 'Editar y perfeccionar.', topics: ['Photoshop: Relleno generativo con Adobe Firefly.', 'Logotipos y vectorización rápida.', 'Brand Kits generados 100% con IA.'], error: null },
@@ -86,7 +85,7 @@ export const courses: Course[] = [
     duration: '6 semanas',
     price: 'Inscripciones Abiertas',
     status: 'available',
-    color: { from: '#A855F7', to: '#D946EF' }, // Morado a Rosa/Fuchsia
+    color: { from: '#A855F7', to: '#D946EF' },
     modules: [
       { emoji: '⚡', title: 'Módulo 1: Entornos de Desarrollo con IA', objective: 'Configurar el IDE del futuro.', topics: ['Cursor: El IDE con IA nativa para refactorizar proyectos.', 'GitHub Copilot: Autocompletado en tiempo real.', 'Generación de boilerplate en React, Python o Node.js.'], error: 'Error Común: Confiar ciegamente en el código generado sin auditar la seguridad.' },
       { emoji: '🛠️', title: 'Módulo 2: Pair Programming y Agentes', objective: 'Dejar que la IA resuelva bugs complejos.', topics: ['Traducción de código: PHP viejo a TypeScript moderno.', 'Explicación de código Legacy.', 'Generación de Regex y consultas SQL con lenguaje natural.'], error: null },
@@ -103,7 +102,7 @@ export const courses: Course[] = [
     duration: '4 semanas',
     price: 'Inscripciones Abiertas',
     status: 'available',
-    color: { from: '#10B981', to: '#34D399' }, // Verde Esmeralda
+    color: { from: '#10B981', to: '#34D399' },
     modules: [
       { emoji: '🏃‍♂️', title: 'Módulo 1: Agilidad en la Era IA', objective: 'Actualizar el framework de trabajo.', topics: ['Repaso exprés del framework SCRUM.', 'El nuevo rol del Scrum Master como Orquestador de IA.'], error: null },
       { emoji: '📝', title: 'Módulo 2: Gestión Inteligente del Backlog', objective: 'Escribir menos y planear mejor.', topics: ['Redacción perfecta de Historias de Usuario con Claude.', 'Estimación de esfuerzo (Story Points) basada en datos.', 'División automática de Épicas gigantes.'], error: 'Error Común: Hacer historias de usuario genéricas que confunden a los programadores.' },
@@ -120,7 +119,7 @@ export const courses: Course[] = [
     duration: '3 semanas',
     price: 'Inscripciones Abiertas',
     status: 'available',
-    color: { from: '#EC4899', to: '#F43F5E' }, // Rosa Eléctrico a Rojo
+    color: { from: '#EC4899', to: '#F43F5E' },
     modules: [
       { emoji: '🎣', title: 'Módulo 1: El Nuevo Paisaje de Ataques', objective: 'Conocer las armas del enemigo.', topics: ['Spear-Phishing Generativo: Correos de estafa sin faltas.', 'Deepfakes: Clonación de voz de directivos (Vishing).', 'Inyección de Prompts en los chatbots de tu empresa.'], error: 'Error Común: Creer que el antivirus tradicional detectará un ataque de ingeniería social con IA.' },
       { emoji: '🛡️', title: 'Módulo 2: El Escudo Defensivo', objective: 'Blindar tu organización.', topics: ['Uso de IA para detectar anomalías en la red.', 'Capacitar al personal para detectar audios/videos falsos.', 'Clasificación automática de malware.'], error: null },
