@@ -15,10 +15,10 @@ export function Hero() {
         
         {/* EL LOGO PRO: GIGANTE, CENTRADO Y CON UN BRILLO SUTIL */}
         <div className="flex justify-center items-center">
-          <img 
+        <img 
             src={logoPro} 
             alt="Inteliyen Pro" 
-            className="h-48 md:h-64 lg:h-80 w-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-transform duration-500 hover:scale-105" 
+            className="h-64 md:h-80 lg:h-96 w-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-transform duration-500 hover:scale-105" 
           />
         </div>
 
