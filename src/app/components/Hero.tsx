@@ -6,22 +6,22 @@ export function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        {/* LOGO DE CEREBRO: Corregimos el enlace roto y lo escalamos para que sea mas pequeño (h-28) */}
+        {/* LOGO DE CEREBRO: Mantenemos la posición y el tamaño masivo de la imagen original */}
         <div className="flex justify-center mb-8">
           <img 
-            src="/assets/logo.png" 
+            src="/assets/logo.png" // OJO: Asegúrate de que esta imagen SEA EL CEREBRO ORIGINAL
             alt="Cerebro Inteliyen Core" 
-            className="h-28 md:h-32 lg:h-36 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)] animate-pulse" 
+            className="h-64 md:h-80 lg:h-96 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)] animate-pulse" 
             style={{ animationDuration: '3s' }}
           />
         </div>
 
-        {/* TITULAR DE MARCA: Mantenemos el degradado multi-color y la posición tal cual la imagen */}
+        {/* TITULAR DE MARCA: Usamos colores VIVOS e IDÉNTICOS en el degradado */}
         <h1 
           className="text-6xl md:text-8xl lg:text-9xl mb-12 flex flex-col items-center leading-none"
           style={{ fontFamily: 'Orbitron, sans-serif' }}
         >
-          {/* Fíjate aquí: Mantenemos el degradado multi-color exacto */}
+          {/* Fíjate aquí: Usamos el degradado neón vibrante idéntico a tu foto */}
           <span className="block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-300 via-cyan-300 to-blue-500 animate-pulse tracking-wider" style={{ animationDuration: '4s' }}>
             INTELIYEN
           </span>
