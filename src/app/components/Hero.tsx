@@ -19,21 +19,28 @@ export function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/30 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <div className="flex justify-center mb-8">
-          <img src={logo} alt="Inteliyen" className="h-32 md:h-40 lg:h-48 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]" />
+        <div className="flex justify-center mb-6">
+          <img src={logo} alt="Inteliyen" className="h-28 md:h-36 lg:h-40 w-auto drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]" />
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 bg-gradient-to-r from-purple-400 via-pink-300 to-cyan-400 bg-clip-text text-transparent tracking-wider" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+        {/* INTELIYEN MÁS PEQUEÑO */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 bg-gradient-to-r from-purple-400 via-pink-300 to-cyan-400 bg-clip-text text-transparent tracking-wider font-bold" style={{ fontFamily: 'Orbitron, sans-serif' }}>
           INTELIYEN
         </h1>
 
-        {/* AQUÍ ESTÁ EL TEXTO NUEVO EXACTAMENTE COMO LO PEDISTE */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-12 max-w-4xl mx-auto leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
+        {/* FRASE PRINCIPAL COMO LA TIENES EN LA FOTO */}
+        <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-6 max-w-4xl mx-auto leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
           Lleva tu empresa al siguiente nivel con{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_15px_rgba(6,182,212,0.6)]">
             Inteligencia Artificial.
           </span>
         </h2>
+
+        {/* INFORMACIÓN DE REGRESO, PERO MÁS CHICA Y DISCRETA */}
+        <div className="text-sm md:text-base text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <p className="text-gray-300 font-semibold mb-1">Software a tu medida. Capacitación que impulsa a tu equipo.</p>
+          <p>Desarrollamos software a la medida y capacitamos a los equipos que lo operan. En INTELIYEN, la tecnología no llega sola.</p>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
