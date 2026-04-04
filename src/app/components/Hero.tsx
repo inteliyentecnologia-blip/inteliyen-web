@@ -1,4 +1,4 @@
-import logoSvg from '../../assets/logo.svg';
+import logoPng from '../../assets/logo.png';
 
 export function Hero() {
   return (
@@ -12,59 +12,52 @@ export function Hero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-pink-400/6 rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '1s' }} />
 
       {/* Contenido centrado */}
-      <div className="relative z-10 flex flex-col items-center gap-7">
+      <div className="relative z-10 flex flex-col items-center gap-6">
 
-        {/* Logo */}
+        {/* Logo PNG grande */}
         <div
-          className="drop-shadow-[0_0_30px_rgba(168,85,247,0.65)]"
+          className="drop-shadow-[0_0_40px_rgba(168,85,247,0.7)]"
           style={{ animation: 'floatLogo 6s ease-in-out infinite' }}
         >
           <img
-            src={logoSvg}
+            src={logoPng}
             alt="Inteliyen"
-            className="h-36 md:h-48 lg:h-56 w-auto"
+            className="h-64 md:h-80 lg:h-96 w-auto"
           />
         </div>
 
-        {/* Nombre */}
+        {/* Nombre — letras más chicas y elegantes */}
         <h1
-          className="font-medium tracking-[0.12em] leading-none text-transparent bg-clip-text bg-gradient-to-r from-[#b166cc] via-[#ff7eb6] to-[#4deeea]"
+          className="font-medium tracking-[0.18em] leading-none text-transparent bg-clip-text bg-gradient-to-r from-[#b166cc] via-[#ff7eb6] to-[#4deeea]"
           style={{
             fontFamily: "'Orbitron', sans-serif",
-            fontSize: 'clamp(52px, 10vw, 110px)',
+            fontSize: 'clamp(28px, 5vw, 64px)',
           }}
         >
           INTELIYEN
         </h1>
 
         {/* Línea decorativa */}
-        <div className="w-28 h-px bg-gradient-to-r from-transparent via-[#b166cc] to-transparent opacity-60" />
+        <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#b166cc] to-transparent opacity-50" />
 
-        {/* Tagline */}
+        {/* Tagline sutil */}
         <p
-          className="text-white/35 tracking-[0.35em] uppercase"
+          className="text-white/30 tracking-[0.3em] uppercase"
           style={{
             fontFamily: "'Orbitron', sans-serif",
-            fontSize: 'clamp(11px, 1.8vw, 15px)',
+            fontSize: 'clamp(9px, 1.4vw, 12px)',
           }}
         >
           Inteligencia artificial · Educación · Futuro
         </p>
 
-        {/* CTA */}
-        <button
-          className="mt-2 border border-[#b166cc]/50 text-white px-10 py-3.5 text-[13px] tracking-[0.2em] uppercase hover:border-[#b166cc] hover:text-[#ff7eb6] hover:shadow-[0_0_25px_rgba(177,102,204,0.3)] transition-all duration-300"
-          style={{ fontFamily: "'Orbitron', sans-serif", fontWeight: 500 }}
-        >
-          Explorar cursos
-        </button>
       </div>
 
-      {/* Animación float para el logo */}
+      {/* Animación float */}
       <style>{`
         @keyframes floatLogo {
           0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
+          50% { transform: translateY(-10px); }
         }
       `}</style>
     </section>
