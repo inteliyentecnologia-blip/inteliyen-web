@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, BookOpen, Clock, TrendingUp, ChevronRight } from 'lucide-react';
+import { BookOpen, Clock, TrendingUp, ChevronRight } from 'lucide-react';
 // IMPORTAMOS COMO 'courses' PARA EVITAR EL ERROR DE IMPORTACIÓN
 import { courses } from '../data/coursesData';
 
@@ -14,39 +14,32 @@ export default function CoursesListPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-purple-500/10">
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-4">
-            <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent tracking-wider" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-              INTELIYEN
-            </span>
-          </Link>
-          <Link to="/" className="flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span>Volver al Inicio</span>
-          </Link>
-        </nav>
-      </header>
+      
+      {/* ELIMINAMOS EL <header> QUE ESTABA AQUÍ ADENTRO. 
+          El Header.tsx global ya se encarga de mostrar "<- Volver al Inicio" de forma limpia */}
 
+      {/* pt-32 es el margen superior perfecto para que nada se encime con la barra */}
       <main className="pt-32 pb-20 px-6 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #000000 0%, #0a0014 50%, #000000 100%)' }}>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <BookOpen className="w-10 h-10 text-purple-400" />
-              <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-                CURSOS Y CAPACITACIÓN
+            
+            {/* Ajuste flex-col para móviles: evita que el texto y el icono choquen */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+              <BookOpen className="w-10 h-10 md:w-12 md:h-12 text-purple-400 shrink-0" />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent leading-tight md:leading-none" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+                CURSOS Y<br className="md:hidden" /> CAPACITACIÓN
               </h1>
             </div>
-            <p className="text-gray-400 text-xl max-w-3xl mx-auto">
+            
+            <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto">
               Formación tecnológica de vanguardia para profesionales e impulsar tu empresa.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* AGREGAMOS EL OPTIONAL CHAINING Y MAPAMOS SOBRE 'courses' */}
             {courses?.map((course, index) => (
               <div key={course.id} className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
                 <Link to={course.status === 'available' ? `/cursos/${course.id}` : '#'} className={`group relative block h-full ${course.status === 'coming-soon' ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
