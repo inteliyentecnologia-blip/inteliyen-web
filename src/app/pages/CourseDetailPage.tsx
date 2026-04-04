@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle2, Clock, TrendingUp, Target } from 'lucide-react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { CheckCircle2, Clock, TrendingUp, Target } from 'lucide-react';
 import { courses } from '../data/coursesData';
 
-import logo from '../../assets/logo.png';
 import selloGold from '../../assets/sello-garantia.png';
 import certivaliLogo from '../../assets/certivali.png'; 
 
@@ -32,23 +31,9 @@ export default function CourseDetailPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* HEADER */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-purple-500/10">
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-4">
-            <img src={logo} alt="Inteliyen" className="h-12 md:h-14 w-auto" />
-            <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent tracking-wider" style={{ fontFamily: 'Orbitron, sans-serif' }}>
-              INTELIYEN
-            </span>
-          </Link>
-          <Link to="/cursos" className="flex items-center gap-2 text-gray-300 hover:text-purple-400 transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span>Volver a Cursos</span>
-          </Link>
-        </nav>
-      </header>
+      {/* ELIMINADO: El header que estaba aquí se borró para usar el global */}
 
-      <main className="pt-32 pb-20 px-6 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #000000 0%, #0a0014 50%, #000000 100%)' }}>
+      <main className="pt-24 md:pt-32 pb-20 px-6 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #000000 0%, #0a0014 50%, #000000 100%)' }}>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl"></div>
 
@@ -82,7 +67,6 @@ export default function CourseDetailPage() {
                       {course.description}
                     </p>
 
-                    {/* SECCIÓN "DIRIGIDO A" INTEGRADA */}
                     <div className="bg-white/5 border border-white/10 rounded-xl p-5 mb-8">
                       <div className="flex items-start gap-3">
                         <Target className="w-6 h-6 flex-shrink-0" style={{ color: course.color.from }} />
@@ -92,18 +76,15 @@ export default function CourseDetailPage() {
                         </p>
                       </div>
                     </div>
-
                   </div>
                 </div>
 
-                {/* BOTÓN ORIGINAL DE WHATSAPP */}
                 <div className="flex justify-start">
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105" style={{ fontFamily: 'Inter, sans-serif' }}>
                     Solicitar Información por WhatsApp
                   </a>
                 </div>
 
-                {/* LOGO CERTIVALI EN LA ESQUINA (COMO LO TENÍAS Y QUERÍAS) */}
                 <img 
                   src={certivaliLogo} 
                   alt="Avalado por Certivali" 
@@ -113,7 +94,7 @@ export default function CourseDetailPage() {
             </div>
           </div>
 
-          {/* TEMARIO DINÁMICO */}
+          {/* TEMARIO */}
           <div className={`mt-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold mb-10 text-center" style={{ fontFamily: 'Orbitron, sans-serif' }}>
               Temario del Curso
@@ -137,7 +118,6 @@ export default function CourseDetailPage() {
               ))}
             </div>
             
-            {/* SECCIÓN DE VALIDACIÓN CURRICULAR */}
             <div className="mt-16 bg-[#050505] border border-yellow-500/20 p-10 md:p-12 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-10 shadow-2xl relative">
               <div className="w-48 shrink-0 flex justify-center">
                 <img 
@@ -147,18 +127,14 @@ export default function CourseDetailPage() {
                 />
               </div>
               <div className="text-center md:text-left flex-1">
-                <h3 
-                  className="text-2xl md:text-3xl font-extrabold text-[#FFD700] mb-6"
-                  style={{ fontFamily: 'Orbitron, sans-serif' }}
-                >
+                <h3 className="text-2xl md:text-3xl font-extrabold text-[#FFD700] mb-6" style={{ fontFamily: 'Orbitron, sans-serif' }}>
                   Certificación con Validez Internacional
                 </h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  Al concluir con éxito este programa, <strong className="text-white">INTELIYEN</strong> otorga un diploma avalado por <strong className="text-white">CERTIVALI (Institución de Validación Internacional)</strong>. Todas nuestras acreditaciones cuentan con <strong className="text-white">valor curricular formal</strong>, garantizando que tus nuevas competencias son reconocidas por empresas y organismos a nivel global.
+                  Al concluir con éxito este programa, <strong className="text-white">INTELIYEN</strong> otorga un diploma avalado por <strong className="text-white">CERTIVALI</strong>. Todas nuestras acreditaciones cuentan con <strong className="text-white">valor curricular formal</strong>.
                 </p>
               </div>
             </div>
-
           </div>
         </div>
       </main>

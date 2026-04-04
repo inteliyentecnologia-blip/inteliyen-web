@@ -19,14 +19,14 @@ export function Header() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-        isHomePage && isScrolled 
-          ? 'bg-black/80 backdrop-blur-md border-b border-purple-500/20 py-3' 
-          : 'bg-transparent border-none py-6' // Aquí matamos el borde y el banner en cursos
+        isScrolled || isCoursesList || isCourseDetail
+          ? 'bg-black/90 backdrop-blur-md border-b border-purple-500/20 py-4' 
+          : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center min-h-[40px]">
+      <div className="max-w-7xl mx-auto px-6 flex items-center">
         
-        {/* VOLVER A CURSOS: El que te gusta, flotando sin banner */}
+        {/* BOTÓN VOLVER A CURSOS (Para cuando estás dentro de un curso) */}
         {isCourseDetail && (
           <button 
             onClick={() => navigate('/cursos')}
@@ -41,7 +41,7 @@ export function Header() {
           </button>
         )}
 
-        {/* VOLVER AL INICIO: Para la lista general */}
+        {/* BOTÓN VOLVER AL INICIO (Para la lista general de cursos) */}
         {isCoursesList && (
           <Link 
             to="/"
@@ -56,7 +56,7 @@ export function Header() {
           </Link>
         )}
 
-        {/* MENÚ DEL HOME: Centrado como siempre */}
+        {/* MENÚ NORMAL DEL HOME */}
         {isHomePage && (
           <nav className="hidden md:flex gap-10 text-xs lg:text-sm tracking-[0.25em] font-medium uppercase mx-auto" style={{ fontFamily: "'Orbitron', sans-serif" }}>
             <a href="#home" className="text-gray-400 hover:text-white transition-colors">Inicio</a>
