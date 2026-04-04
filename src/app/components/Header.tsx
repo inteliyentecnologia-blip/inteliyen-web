@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { pathname } = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -16,37 +15,21 @@ export function Header() {
   const isCoursesList = pathname === '/cursos';
   const isCourseDetail = pathname.startsWith('/cursos/');
 
-  // Si estamos en cursos, quitamos fondos y bordes para evitar el "doble banner"
-  const isInsideCourses = isCoursesList || isCourseDetail;
+  // SI ES DETALLE DE CURSO, NO RENDERIZAMOS NADA. 
+  // Dejamos que el componente de la página de cursos maneje su propio diseño.
+  if (isCourseDetail) return null;
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-        isHomePage && isScrolled 
-          ? 'bg-black/80 backdrop-blur-md border-b border-purple-500/20 py-3' 
-          : isInsideCourses
-            ? 'bg-transparent border-none py-4' // Limpieza total en cursos
-            : 'bg-transparent py-5'
+        isScrolled || isCoursesList
+          ? 'bg-black/90 backdrop-blur-md border-b border-purple-500/20 py-3' 
+          : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center min-h-[40px]">
         
-        {/* VOLVER A CURSOS: Solo el texto y la flecha flotando */}
-        {isCourseDetail && (
-          <button 
-            onClick={() => navigate('/cursos')}
-            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors cursor-pointer group"
-          >
-            <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase" style={{ fontFamily: "'Orbitron', sans-serif" }}>
-              Volver a Cursos
-            </span>
-          </button>
-        )}
-
-        {/* VOLVER AL INICIO: Solo el texto y la flecha flotando */}
+        {/* CASO: LISTA DE CURSOS - Solo flecha y "Volver al Inicio" */}
         {isCoursesList && (
           <Link 
             to="/"
@@ -61,7 +44,7 @@ export function Header() {
           </Link>
         )}
 
-        {/* MENÚ HOME: Se mantiene igual */}
+        {/* CASO: HOME - Menú centrado normal */}
         {isHomePage && (
           <nav className="hidden md:flex gap-10 text-xs lg:text-sm tracking-[0.25em] font-medium uppercase mx-auto" style={{ fontFamily: "'Orbitron', sans-serif" }}>
             <a href="#home" className="text-gray-400 hover:text-white transition-colors">Inicio</a>
