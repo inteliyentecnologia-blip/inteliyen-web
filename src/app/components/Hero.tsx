@@ -11,10 +11,10 @@ export function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-400/12 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-pink-400/6 rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '1s' }} />
 
-      {/* Contenido centrado */}
-      <div className="relative z-10 flex flex-col items-center gap-6">
+      {/* Contenido centrado — logo + nombre */}
+      <div className="relative z-10 flex flex-col items-center gap-5">
 
-        {/* Logo PNG grande */}
+        {/* Logo PNG */}
         <div
           className="drop-shadow-[0_0_40px_rgba(168,85,247,0.7)]"
           style={{ animation: 'floatLogo 6s ease-in-out infinite' }}
@@ -22,35 +22,37 @@ export function Hero() {
           <img
             src={logoPng}
             alt="Inteliyen"
-            className="h-64 md:h-80 lg:h-96 w-auto"
+            className="h-48 md:h-60 lg:h-72 w-auto"
           />
         </div>
 
-        {/* Nombre — letras más chicas y elegantes */}
+        {/* Nombre */}
         <h1
           className="font-medium tracking-[0.18em] leading-none text-transparent bg-clip-text bg-gradient-to-r from-[#b166cc] via-[#ff7eb6] to-[#4deeea]"
           style={{
             fontFamily: "'Orbitron', sans-serif",
-            fontSize: 'clamp(28px, 5vw, 64px)',
+            fontSize: 'clamp(24px, 4vw, 52px)',
           }}
         >
           INTELIYEN
         </h1>
 
         {/* Línea decorativa */}
-        <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#b166cc] to-transparent opacity-50" />
+        <div className="w-20 h-px bg-gradient-to-r from-transparent via-[#b166cc] to-transparent opacity-50" />
 
-        {/* Tagline sutil */}
+      </div>
+
+      {/* Tagline — pegado al fondo, separado del contenido central */}
+      <div className="absolute bottom-10 left-0 right-0 flex justify-center z-10">
         <p
           className="text-white/30 tracking-[0.3em] uppercase"
           style={{
             fontFamily: "'Orbitron', sans-serif",
-            fontSize: 'clamp(9px, 1.4vw, 12px)',
+            fontSize: 'clamp(9px, 1.2vw, 11px)',
           }}
         >
-          Inteligencia artificial · Educación · Futuro
+          Inteligencia artificial · Educación · Desarrollo
         </p>
-
       </div>
 
       {/* Animación float */}
