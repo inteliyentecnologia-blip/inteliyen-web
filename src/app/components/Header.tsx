@@ -12,52 +12,54 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Detectamos si estamos en la raíz, en la lista de cursos o dentro de un curso
   const isHomePage = pathname === '/';
   const isCoursesList = pathname === '/cursos';
   const isCourseDetail = pathname.startsWith('/cursos/');
 
+  // Si no estamos en el Home, el header debe ser lo más limpio posible
+  const isSimpleHeader = isCoursesList || isCourseDetail;
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-        isScrolled || isCourseDetail || isCoursesList
-          ? 'bg-black/90 backdrop-blur-md border-b border-purple-500/20 py-3' 
+        isScrolled || isSimpleHeader
+          ? 'bg-black/95 backdrop-blur-md border-b border-purple-500/20 py-3' 
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center min-h-[40px]">
+      <div className="max-w-7xl mx-auto px-6 flex items-center min-h-[45px]">
         
-        {/* CASO 1: DETALLE DEL CURSO - Solo flecha y "Volver a Cursos" */}
+        {/* CASO: DENTRO DE UN CURSO - Limpieza total, solo botón de regreso */}
         {isCourseDetail && (
           <button 
             onClick={() => navigate('/cursos')}
-            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors cursor-pointer"
+            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors cursor-pointer group"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
-            <span className="text-sm font-medium tracking-wider uppercase" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+            <span className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase" style={{ fontFamily: "'Orbitron', sans-serif" }}>
               Volver a Cursos
             </span>
           </button>
         )}
 
-        {/* CASO 2: LISTA DE CURSOS - Solo flecha y "Volver al Inicio" */}
+        {/* CASO: LISTA DE CURSOS - Solo volver al inicio */}
         {isCoursesList && (
           <Link 
             to="/"
-            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
-            <span className="text-sm font-medium tracking-wider uppercase" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+            <span className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase" style={{ fontFamily: "'Orbitron', sans-serif" }}>
               Volver al Inicio
             </span>
           </Link>
         )}
 
-        {/* CASO 3: HOME - Menú centrado normal (se oculta en los otros casos) */}
+        {/* CASO: HOME - Menú de navegación normal */}
         {isHomePage && (
           <nav className="hidden md:flex gap-10 text-xs lg:text-sm tracking-[0.25em] font-medium uppercase mx-auto" style={{ fontFamily: "'Orbitron', sans-serif" }}>
             <a href="#home" className="text-gray-400 hover:text-white transition-colors">Inicio</a>
