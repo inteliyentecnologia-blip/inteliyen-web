@@ -16,20 +16,22 @@ export function Header() {
   const isCoursesList = pathname === '/cursos';
   const isCourseDetail = pathname.startsWith('/cursos/');
 
-  // Si no estamos en el Home, el header debe ser lo más limpio posible
-  const isSimpleHeader = isCoursesList || isCourseDetail;
+  // Si estamos en cursos, quitamos fondos y bordes para evitar el "doble banner"
+  const isInsideCourses = isCoursesList || isCourseDetail;
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-        isScrolled || isSimpleHeader
-          ? 'bg-black/95 backdrop-blur-md border-b border-purple-500/20 py-3' 
-          : 'bg-transparent py-5'
+        isHomePage && isScrolled 
+          ? 'bg-black/80 backdrop-blur-md border-b border-purple-500/20 py-3' 
+          : isInsideCourses
+            ? 'bg-transparent border-none py-4' // Limpieza total en cursos
+            : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center min-h-[45px]">
+      <div className="max-w-7xl mx-auto px-6 flex items-center min-h-[40px]">
         
-        {/* CASO: DENTRO DE UN CURSO - Limpieza total, solo botón de regreso */}
+        {/* VOLVER A CURSOS: Solo el texto y la flecha flotando */}
         {isCourseDetail && (
           <button 
             onClick={() => navigate('/cursos')}
@@ -44,7 +46,7 @@ export function Header() {
           </button>
         )}
 
-        {/* CASO: LISTA DE CURSOS - Solo volver al inicio */}
+        {/* VOLVER AL INICIO: Solo el texto y la flecha flotando */}
         {isCoursesList && (
           <Link 
             to="/"
@@ -59,7 +61,7 @@ export function Header() {
           </Link>
         )}
 
-        {/* CASO: HOME - Menú de navegación normal */}
+        {/* MENÚ HOME: Se mantiene igual */}
         {isHomePage && (
           <nav className="hidden md:flex gap-10 text-xs lg:text-sm tracking-[0.25em] font-medium uppercase mx-auto" style={{ fontFamily: "'Orbitron', sans-serif" }}>
             <a href="#home" className="text-gray-400 hover:text-white transition-colors">Inicio</a>
